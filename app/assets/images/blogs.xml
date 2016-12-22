@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<articles type="blogs">
+	<article>
+		<type>Showcase</type>
+		<title>Spinner Spotlight: Dj Dontizl</title>
+		<share>Share</share>
+		<detail>DJ Dontizl has a style all his own and a loyal fanbase in the Capitol City. We caught up with the DJ for a glimpse into his life of music.</detail>
+		<description></description>
+		<image>images/blogs1.png</image>
+        <sponsored>true</sponsored>
+        <ad>false</ad>	
+	</article>
+	<article>
+		<type>Showcase</type>
+		<title>Austin Martin, Austin's Triple Threat</title>
+		<share>Share</share>
+		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
+		<image>images/blogs2.png</image>
+        <sponsored>true</sponsored>
+        <ad>false</ad>	
+	</article>
+	<article>
+		<type>Showcase</type>
+		<title>Austin's Fighter: Kurtiss Colvin</title>
+		<share>Share</share>
+		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
+		<image>images/blogs3.png</image>
+        <sponsored>false</sponsored>
+        <ad>true</ad>	
+	</article>
+	<article>
+		<type>Showcase</type>
+		<title>Socialite Spotlight: Toddy B</title>
+		<share>Share</share>
+		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
+		<image>images/blogs4.png</image>
+        <sponsored>false</sponsored>
+        <ad>false</ad>	
+	</article>
+	<article>
+		<type>Showcase</type>
+		<title>Socialite Spotlight: DJ Tetsuo</title>
+		<share>Share</share>
+		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
+		<image>images/blogs5.png</image>
+        <sponsored>false</sponsored>
+        <ad>false</ad>	
+	</article>
+	<article>
+		<type>Showcase</type>
+		<title>Socialite Summer: Ice Cream Heavens</title>
+		<share>Share</share>
+		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
+		<image>images/blogs6.png</image>
+        <sponsored>false</sponsored>
+        <ad>false</ad>	
+	</article>
+	<article>
+		<type>Showcase</type>
+		<title>Socialite Summer: Brunch Hotspots</title>
+		<share>Share</share>
+		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
+		<image>images/blogs7.png</image>
+        <sponsored>false</sponsored>
+        <ad>false</ad>	
+	</article>
+	<article>
+		<type>Showcase</type>
+		<title>Socialite Summer: Hippie Hollow</title>
+		<share>Share</share>
+		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
+		<image>images/blogs8.png</image>
+        <sponsored>false</sponsored>
+        <ad>true</ad>	
+	</article>
+</articles>

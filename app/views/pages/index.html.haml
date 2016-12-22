@@ -1,0 +1,218 @@
+.logo
+.slideshow
+  .slides
+    %img.kung-fu{:desc => "So it appears we're not invited", :headline => "Racism in Kung Fu", :src => asset_path("kung_fu_saloon.jpg")}/
+    %img{:desc => "Ten Events You Cannot Miss", :headline => "Austin Fashion Weeks", :src => asset_path("slideshow.jpg") }/
+    %img.perlas{:desc => "From Franklins to Biscuits and Groovy", :headline => "Top Ten Places to Eat", :src => asset_path("perlas.jpg")}/
+    %img.fashion{:desc => "An exclusive list of Austin Trendsetters", :headline => "Best dressed in Austin", :src => asset_path("fashion.jpg")}/
+  .navigation
+    %i.dot.fa.fa-circle-o
+  .caption
+    %span.headline
+    %span.description
+.templates
+  .content-box.ads-template
+    %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+      %span Ad Space
+  .content-box.events-template.no-content
+    .image
+      %img{:src => asset_path("event1.png")}/
+    .content
+      .overlay
+        .sponsored
+        .date
+          %span.dayofweek
+          %span.month
+        .setting
+          %span.type
+          %span.title
+          %p.description
+  .content-box.blogs-template.no-content
+    .image
+    .content
+      .overlay
+        .sponsored
+        .setting
+          %span.type
+          %span.title
+          %p.description
+  .content-box.pictures-template.no-content
+    .image
+    .content
+      .overlay
+        .sponsored
+        .date
+          %span.dayofweek
+          %span.month
+        .setting
+          %span.place
+          %span.title
+          %p.description
+  .content-box.videos-template
+    .image
+    .player
+      %video.video{:controls => "controls", :preload => "none"}
+    .content
+      .overlay
+        .sponsored
+        .date
+          %span.dayofweek
+          %span.month
+        .setting
+          %span.place
+          %span.title
+          %p.description
+.articles
+  .header
+    .search-fields
+      .category.search
+        .selected-link
+          %span.header-text I want to see:
+          %span.currently-selected Events
+          .arrow-up
+        .menu
+          %li.selected Events
+          %li Blogs
+          %li Pictures
+          %li Videos
+      .date.search
+        .selected-link
+          %span.header-text I want to go:
+          %span.currently-selected This Week
+          .arrow-up
+        .menu
+          %li{:value => "Today"} Today
+          %li.selected{:value => "This Week"} This Week
+          %li{:value => "Next Week"} Next Week
+          %li{:value => "This Month"} This Month
+      .type.search
+        .selected-link
+          %span.header-text For only these type:
+          %span.currently-selected All Types
+          .arrow-up
+        .menu
+          %li.selected{:value => "All"} All Types
+  .section-header
+    .section-name{:name => "events"} Events
+    .section-name{:name => "blogs"} Blogs
+    .section-name{:name => "pictures"} Pictures
+    .section-name{:name => "videos"} Videos
+  .section.events.main{:name => "events"}
+    .section-name.event Events
+    -i = 0
+    - 6.times do
+      - i = i + 1
+      -if i==5
+        .content-box.ads-template
+          %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+            %span Ad Space
+      -else
+        .content-box.events-template
+          .image
+            %img{:src => asset_path("event"+i.to_s+".png")}/
+          .content
+            .overlay
+              .sponsored Sponsored
+              .date
+                %span.dayofweek Friday
+                %span.month Sep. 19
+              .setting
+                %span.type Networking
+                %span.title Young Professionals' Happy Hour
+                %p.description
+    .load-more Load More Events
+  .section.blogs.main{:name => "blogs"}
+    .section-name.blog Blogs
+    -i = 0
+    - 6.times do
+      - i = i + 1
+      -if i==4
+        .content-box.ads-template
+          %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+            %span Ad Space
+      -else
+        .content-box.blogs-template
+          .image
+            %img{:src => asset_path("blogs"+i.to_s+".png")}/
+          .content
+            .overlay
+              .sponsored Sponsored
+              .setting
+                %span.type Showcase
+                %span.title The Brain Behind Austin's Black Film Festival
+                %p.description
+    .load-more Load More Blogs
+  .section.pictures.main{:name => "pictures"}
+    .section-name.picture Pictures
+    -i = 0
+    - 6.times do
+      - i = i + 1
+      -if i==2
+        .content-box.ads-template
+          %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+            %span Ad Space
+      -else
+        .content-box.pictures-template
+          .image
+            %img{:src => asset_path("pictures"+i.to_s+".png")}/
+          .content
+            .overlay
+              .sponsored Sponsored
+              .date
+                %span.dayofweek Friday
+                %span.month Sep. 19
+              .setting
+                %span.type Networking
+                %span.title Young Professionals' Happy Hour
+                %p.description
+    .load-more Load More Pictures
+  .section.videos.main{:name => "videos"}
+    .section-name.video Videos
+    -i = 0
+    - 6.times do
+      - i = i + 1
+      -if i==6
+        .content-box.ads-template
+          %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+            %span Ad Space
+      -else
+        .content-box.videos-template
+          .image
+            %img{:src => asset_path("videos"+i.to_s+".png")}/
+          .content
+            .overlay
+              .sponsored Sponsored
+              .date
+                %span.dayofweek Friday
+                %span.month Sep. 19
+              .setting
+                %span.type Networking
+                %span.title Young Professionals' Happy Hour
+                %p.description    
+    .load-more Load More Videos
+.bookmarks
+  .bookmarked-articles
+    .section.events{:name => "events"}
+      .section-name.event Scroll to see more Events
+      .load-more Load More Events
+    .section.blogs{:name => "blogs"}
+      .section-name.blog Scroll to see more Blogs
+      .load-more Load More Blogs
+    .section.pictures{:name => "pictures"}
+      .section-name.picture Scroll to see more Pictures
+      .load-more Load More Picture
+    .section.videos{:name => "videos"}
+      .section-name.video Scroll to see more Videos
+      .load-more Load More Videos
+  .main-description
+    .close
+      %i.fa.fa-times
+    .share
+      %i.fa.fa-facebook
+      %i.fa.fa-twitter
+    .desc
+      %span.article-type
+      %span.article-title
+      .details More Info
+      %span.article-description
+      .thumbnails

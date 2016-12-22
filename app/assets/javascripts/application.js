@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= #require jquery.js
+//= require video.js
+//= require default.js
 //= require_tree .
