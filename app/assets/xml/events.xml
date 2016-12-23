@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<articles type="events">
+	<article>
+		<dayofweek>Friday</dayofweek>
+		<month>Sep. 19</month>
+		<type>Networking</type>
+		<title>Young Professionals' Happy Hour</title>
+		<time>5pm - 9pm</time>
+		<place>208 W 4th St. Unit D</place>
+		<image>assets/event1.png</image>
+        <sponsored>Sponsored Ad</sponsored>
+        <ad></ad>	
+		<description>TAS Austin holds monthly networking socials or happy hours. Our social events are designed to build a sense of belonging to a community, as well as being part of something with a high minded purpose. We have made every effort to create a safe, engaging environment based on goodwill and meaningful conversation.  As we foster an environment where business relationships and friendships can be nurtured, we hope to see new business partnerships launched.</description>
+	</article>
+	<article>
+		<dayofweek>Friday</dayofweek>
+		<month>Sep. 19</month>
+		<type>TAS Event</type>
+		<title>Black Women in Business</title>
+		<time>6pm - 9pm</time>
+		<place>1315 S Congress Ave</place>
+		<image>assets/event2.png</image>
+        <sponsored>Sponsored Ad</sponsored>
+        <ad></ad>	
+		<description>BLACK WOMEN ROCK! is a movement spearheaded by acclaimed poet, jessica Care moore in 2004 during the National Black Arts Festival. moore wanted to pay homage to one of her musical heroes, Betty Davis, and also give support and a platform to some of the amazing musical, rock and roll playing brown women she'd known for years.</description>
+	</article>
+	<article>
+		<dayofweek>Saturday</dayofweek>
+		<month>Sep. 20</month>
+		<type>Sports</type>
+		<title>Black Chamber of Commerce Annual Golfing Event</title>
+		<time>1pm - 4pm</time>
+		<place>10500 Avery Club Drive</place>
+		<image>assets/event3.png</image>
+        <sponsored>Sponsored Ad</sponsored>
+        <ad></ad>	
+		<description>Conveniently located in northwest Austin, Avery Ranch golf club was designed by former Jack Nicklaus designer Andy Raugust. The course design blends a spectacular up-scale golf course with natural limestone caverns, live-oak trees, rolling hills, and meandering streams and lakes to create a golf experience that is unparalleled in the Austin area.</description>
+	</article>
+	<article>
+		<dayofweek></dayofweek>
+		<month></month>
+		<type></type>
+		<title></title>
+		<time></time>
+		<place></place>
+		<image>assets/event4.png</image>
+        <sponsored></sponsored>
+        <ad>Ad</ad>	
+		<description></description>
+	</article>
+	<article>
+		<dayofweek>Saturday</dayofweek>
+		<month>Sep. 20</month>
+		<type>Showcase</type>
+		<title>Blues on the Green</title>
+		<time>6pm - 10pm</time>
+		<place>2100 Barton Springs Road</place>
+		<image>assets/event5.png</image>
+        <sponsored></sponsored>
+        <ad></ad>	
+		<description>This series of free summertime concerts are hosted by KGSR Austin Radio and held in Austin’s Zilker Park. So, bring a blanket and the family for some live music from our favorite artists.</description>
+	</article>
+	<article>
+		<dayofweek>Saturday</dayofweek>
+		<month>Sep. 14</month>
+		<type>TAS Event</type>
+		<title>The Annual Austin Socialite Mixer</title>
+		<time>7pm - 9pm</time>
+		<place>1604 E. 6th St.</place>
+		<image>assets/event6.png</image>
+        <sponsored></sponsored>
+        <ad></ad>	
+		<description>some other events</description>
+	</article>
+	<article>
+		<dayofweek>Thursday</dayofweek>
+		<month>Sep. 14</month>
+		<type>Showcase</type>
+		<title>Event 7</title>
+		<time>7pm - 9pm</time>
+		<place>1604 E. 6th St.</place>
+		<image>assets/event7.png</image>
+        <sponsored></sponsored>
+        <ad></ad>		
+		<description>Don't forget me this weekend!</description>
+	</article>
+	<article>
+		<dayofweek></dayofweek>
+		<month></month>
+		<type></type>
+		<title></title>
+		<time></time>
+		<place></place>
+		<image></image>
+        <sponsored></sponsored>
+        <ad>Ad</ad>		
+		<description>Don't forget me this weekend!</description>
+	</article>
+	<article>
+		<dayofweek>Thursday</dayofweek>
+		<month>Sep. 14</month>
+		<type>Showcase</type>
+		<title>Event 9</title>
+		<time>7pm - 9pm</time>
+		<place>1604 E. 6th St.</place>
+		<image>assets/event9.png</image>
+        <sponsored></sponsored>
+        <ad></ad>	
+		<description>Don't forget me this weekend!</description>
+	</article>
+	<article>
+		<dayofweek>Thursday</dayofweek>
+		<month>Sep. 14</month>
+		<type>Showcase</type>
+		<title>Event 10</title>
+		<time>7pm - 9pm</time>
+		<place>1604 E. 6th St.</place>
+		<image>assets/event10.png</image>
+        <sponsored></sponsored>
+        <ad></ad>	
+		<description>Don't forget me this weekend!</description>
+	</article>
+	<article>
+		<dayofweek>Thursday</dayofweek>
+		<month>Sep. 14</month>
+		<type>Showcase</type>
+		<title>Event 11</title>
+		<time>7pm - 9pm</time>
+		<place>1604 E. 6th St.</place>
+		<image>assets/event11.png</image>
+        <sponsored></sponsored>
+        <ad></ad>	
+		<description>Don't forget me this weekend!</description>
+	</article>
+</articles>

@@ -1,4 +1,4 @@
-$(document).ready(function(){// load article
+// load article
 var TAS = TAS || {
 	// global
 	options: {
@@ -6,203 +6,205 @@ var TAS = TAS || {
 		slideshow: true,
 	},
 	//global
-	// elem: {
-	// 	document: $(document),
-	// 	window: $(window),
-	// 	body: $('body'),
-	// 	header: $('.header'),
-	// 	sectionHeader: $('.section-header'),
-	// 	articles: $('.articles'),
-	// 	section: $('.section'),
-	// 	bookmarks: $('.bookmarked-articles'),
-	// 	share: $('.share'),
-	// 	details: $('.details'),
-	// 	album: $('.slides'),
-	// 	thumbnails: $('.thumbnails'),
-	// 	loadMore: $('.load-more')
-	// },
-	// // global
-	// events: {
-	// 	data: "data/events.xml",
-	// 	loaded: 0,
-	// 	name: "events",
-	// 	content: "",
-	// 	adIndex: 4
-	// },
-	// blogs: {
-	// 	data: "data/blogs.xml",
-	// 	loaded: 0,
-	// 	name: "blogs",
-	// 	content: "",
-	// 	adIndex: 4
-	// },
-	// pictures: {
-	// 	data: "data/pictures.xml",
-	// 	loaded: 0,
-	// 	name: "pictures",
-	// 	content: "",
-	// 	adIndex: 4
-	// },
-	// videos: {
-	// 	data: "data/videos.xml",
-	// 	loaded: 0,
-	// 	name: "videos",
-	// 	content: "",
-	// 	adIndex: 4
-	// },
-	// //global
-	// sections: function(){
-	// 	return [this.events,this.blogs,this.pictures,this.videos]	
-	// },
-	// // manage content
-	// saveContent: function(sections) {
-	// 	//basic ajax
-	// 	for(var x = 0; x < sections.length; x++){
-	// 		//run ajax
- //     		$.ajax({
-	// 			url: sections[x].data,
-	// 			type: "GET",
-	// 			dataType: "xml",
-	// 			async: false,
-	// 			success: function(result){
-	// 				//save xml data to section's object so we can retrieve later
-	// 				sections[x].content = $(result).find('articles');
-	// 			}
- //        	})
-	// 	}
- //    },
-	// // manage content
-	// addPlaceHolders: function(sections,o) {
-	// 	//go through each section
-	//     for (var x = 0; x < sections.length; x++) {
-	// 		var template,
-	// 		//detemine number of articles to load
-	// 		limit = o.placeholdersToLoad + sections[x].loaded,
-	// 		//number of articles
-	// 		numofArticles = sections[x].content.children('article').length,
-	// 		//max count 
-	// 		maxCount = (limit > numofArticles) ? numofArticles : limit;
-	// 		//fetch defined number of place holders only
-	//         for (var y = sections[x].loaded; y < maxCount; y++) {
-	// 			if(y !== sections[x].adIndex) {
-	// 				template = $(".templates ." + sections[x].name + "-template")
-	// 			}else{
-	// 				template = $(".templates .ads-template");
-	// 				sections[x].adIndex += sections[x].adIndex;
-	// 			}
+	elem: {
+		document: $(document),
+		window: $(window),
+		body: $('body'),
+		header: $('.header'),
+		sectionHeader: $('.section-header'),
+		articles: $('.articles'),
+		section: $('.section'),
+		bookmarks: $('.bookmarked-articles'),
+		share: $('.share'),
+		details: $('.details'),
+		album: $('.slides'),
+		thumbnails: $('.thumbnails'),
+		loadMore: $('.load-more')
+	},
+	// global
+	events: {
+		data: "assets/events.xml",
+		loaded: 0,
+		name: "events",
+		content: "",
+		adIndex: 4
+	},
+	blogs: {
+		data: "assets/blogs.xml",
+		loaded: 0,
+		name: "blogs",
+		content: "",
+		adIndex: 4
+	},
+	pictures: {
+		data: "assets/pictures.xml",
+		loaded: 0,
+		name: "pictures",
+		content: "",
+		adIndex: 4
+	},
+	videos: {
+		data: "assets/videos.xml",
+		loaded: 0,
+		name: "videos",
+		content: "",
+		adIndex: 4
+	},
+	//global
+	sections: function(){
+		return [this.events,this.blogs,this.pictures,this.videos]	
+	},
+	// manage content
+	saveContent: function(sections) {
+		//basic ajax
+		for(var x = 0; x < sections.length; x++){
+			//run ajax
+     		$.ajax({
+				url: sections[x].data,
+				type: "GET",
+				dataType: "xml",
+				async: false,
+				success: function(result){
+					//save xml data to section's object so we can retrieve later
+					sections[x].content = $(result).find('articles');
+				}
+        	})
+		}
+    },
+	// manage content
+	addPlaceHolders: function(sections,o) {
+		//go through each section
+	    for (var x = 0; x < sections.length; x++) {
+			var template,
+			//detemine number of articles to load
+			limit = o.placeholdersToLoad + sections[x].loaded,
+			//number of articles
+			numofArticles = sections[x].content.children('article').length,
+			//max count 
+			maxCount = (limit > numofArticles) ? numofArticles : limit;
+			//fetch defined number of place holders only
+	        for (var y = sections[x].loaded; y < maxCount; y++) {
+				if(y !== sections[x].adIndex) {
+					template = $(".templates ." + sections[x].name + "-template")
+				}else{
+					template = $(".templates .ads-template");
+					sections[x].adIndex += sections[x].adIndex;
+				}
 				
-	// 			//Append template to homepage
-	// 			template.clone().insertBefore(".articles ." + sections[x].name+" .load-more");	
-	// 				//Append template to full description
-	// 			template.clone().insertBefore(".bookmarked-articles ." + sections[x].name+" .load-more");	
+				//Append template to homepage
+				template.clone().insertBefore(".articles ." + sections[x].name+" .load-more");	
+					//Append template to full description
+				template.clone().insertBefore(".bookmarked-articles ." + sections[x].name+" .load-more");	
 				
-	// 			if($(".articles ." + sections[x].name+" .content-box:not('.ads-template')").length === numofArticles){
-	// 				$("." + sections[x].name+" .load-more").text('All '+sections[x].name+' have been loaded').addClass('loaded')
-	// 			}
-	//         }
-	//     }
-	// },
+				if($(".articles ." + sections[x].name+" .content-box:not('.ads-template')").length === numofArticles){
+					$("." + sections[x].name+" .load-more").text('All '+sections[x].name+' have been loaded').addClass('loaded')
+				}
+	        }
+	    }
+	},
 	//scroll effect
 	toggleHeader: function(el){
 		//article top
-		var passTop = (el.articles.offset().top - el.window.scrollTop()) < 0,
+		var passTop = ($('.articles').offset().top - el.window.scrollTop()) < 0,
 		//has fixed class
 		hasFixedClass = el.body.hasClass('fixed');
 				
 		if(passTop && !hasFixedClass){
-			el.body.addClass('fixed');
+			$("body").addClass('fixed');
 		}
-		else if(!passTop && hasFixedClass){
-			el.body.removeClass('fixed');
+		else{
+			$("body").removeClass('fixed');
 		}
 	},
 	
-	// //mange content
-	// insertContent: function(article,box){
-	// 	var HTML,
-	// 	name = article[0].nodeName;
+	//mange content
+	insertContent: function(article,box){
+		var HTML,
+		name = article[0].nodeName;
 		
-	// 	if(name === "image"){
-	// 		HTML = "<img src='"+article.text()+"'/>";
-	// 		box.find('.'+article[0].nodeName).html(HTML)
-	// 	}
-	// 	else if(name === "video"){
-	// 		HTML = "<source type='video/mp4' src='videos/"+article.text()+".mp4'>"	
-	// 		box.find('.'+article[0].nodeName).html(HTML)
-	// 	}
-	// 	else if(name === "length" || name === "folder"){
-	// 		box.attr(name,article.text())	
-	// 	}
-	// 	else {
-	// 		HTML = article.text();
-	// 		box.find('.'+article[0].nodeName).html(HTML)
-	// 	}
-	// },
-	// //scroll effect
-	// toggleSections: function(){
-	// 	var el = TAS.elem;
-	// 	$('.main .section-name').each(function(){
-	// 		var name = $(this).text().toLowerCase(),
-	// 			scrollTop = $(this).offset().top - $(window).scrollTop(),
-	// 			isFixed = $('.section-header').hasClass(name);
+		if(name === "image"){
+			HTML = "<img src='"+article.text()+"'/>";
+			box.find('.'+article[0].nodeName).html(HTML)
+		}
+		else if(name === "video"){
+			HTML = "<source type='video/mp4' src='videos/"+article.text()+".mp4'>"	
+			box.find('.'+article[0].nodeName).html(HTML)
+		}
+		else if(name === "length" || name === "folder"){
+			box.attr(name,article.text())	
+		}
+		else {
+			HTML = article.text();
+			box.find('.'+article[0].nodeName).html(HTML)
+		}
+	},
+	//scroll effect
+	toggleSections: function(){
+		var el = TAS.elem;
+		$('.main .section-name').each(function(){
+			var name = $(this).text().toLowerCase(),
+				scrollTop = $(this).offset().top - $(window).scrollTop(),
+				isFixed = $('.section-header').hasClass(name);
 
-	// 		if((scrollTop < 60) && isFixed){
-	// 			$('.section-header').removeClass(name);
-	// 		}
-	// 		else if((scrollTop > 60) && !isFixed){
-	// 			$('.section-header').addClass(name);
-	// 		}
-	// 	})
-	// },
+			if((scrollTop < 60) && isFixed){
+				$('.section-header').removeClass(name);
+			}
+			else if((scrollTop > 60) && !isFixed){
+				$('.section-header').addClass(name);
+			}
+		})
+	},
 	
-	// // manage content		
-	// loadContent: function(e){	
-	// 	//determine scroller 
-	// 	var area = $(".bookmark-open").length ? "bookmarked-articles" : "articles",
-	// 	//access other variables
-	// 	$this = window.TAS;
-	// 	if(($this.elem.bookmarks.scrollTop() > 0)){
-	// 		$('.bookmarked-articles').find('.section-name').addClass('open')
-	// 	}else{
-	// 		$('.bookmarked-articles').find('.section-name').removeClass('open');
-	// 	}
+	// manage content		
+	loadContent: function(e){	
+		//determine scroller 
+		var area = $(".bookmark-open").length ? "bookmarked-articles" : "articles",
+		//access other variables
+		$this = window.TAS;
+		if(($this.elem.bookmarks.scrollTop() > 0)){
+			$('.bookmarked-articles').find('.section-name').addClass('open')
+		}else{
+			$('.bookmarked-articles').find('.section-name').removeClass('open');
+		}
 		
-	// 	if(!$(".bookmark-open").length){
-	// 		//toggle header 
-	// 		$this.toggleSections($this.elem);
-	// 		//toggle header 
-	// 		$this.toggleHeader($this.elem);
-	// 	}
-	// 	//only target div's with no content				
-	// 	$('.'+area+' .no-content').each(function(){
-	// 		var box = $(this),
-	// 		//define elements scroll top
-	// 		elemTop = box.offset().top - $(window).scrollTop();
-	// 		//if the element is visible in the window
-	// 		if(elemTop < window.innerHeight){	
-	// 			//get section name
-	// 			section = box.parent('.section').attr("name");
-	// 			//mark as having content
-	// 			box.removeClass('no-content');
-	// 			//now, insert the content for each div within box
-	// 			$this[section].content.children('article').eq($this[section].loaded).children().each(function(){
-	// 				$this.insertContent($(this),box);
-	// 			})
-	// 			$this[section].loaded++
-	// 		}else{
-	// 			return false;	
-	// 		} 
+		if(!$(".bookmark-open").length){
+			//toggle header 
+			$this.toggleSections($this.elem);
+			//toggle header 
+			$this.toggleHeader($this.elem);
+		}
+		//only target div's with no content				
+		$('.'+area+' .no-content').each(function(){
+			var box = $(this),
+			//define elements scroll top
+			elemTop = box.offset().top - $(window).scrollTop();
+			//if the element is visible in the window
+			if(elemTop < window.innerHeight){	
+				//get section name
+				section = box.parent('.section').attr("name");
+				// console.log(section)
+				//mark as having content
+				box.removeClass('no-content');
+				//now, insert the content for each div within box
+				$this[section].content.children('article').eq($this[section].loaded).children().each(function(){
+					// console.log($(this)[0].nodeName + " " + box.attr("name"))
+					$this.insertContent($(this),box);
+				})
+				$this[section].loaded++
+			}else{
+				return false;	
+			} 
 			
-	// 		if($(".bookmark-open").length){
-	// 			$('.articles').find('.'+section+' .no-content:eq(0)').replaceWith(box.clone());
-	// 		}
-	// 	})	
-	// },
+			if($(".bookmark-open").length){
+				$('.articles').find('.'+section+' .no-content:eq(0)').replaceWith(box.clone());
+			}
+		})	
+	},
 	
 	setupDots: function(el){
 		var i = 1;
 		//make a dot for each image in slideshow
-		for(i;i<el.album.find('img').length;i++){
+		for(i;i<$(".slides").find('img').length;i++){
 			$('.dot:eq(0)').clone().appendTo('.navigation');		
 		}
 		//show first slide as being active
@@ -211,7 +213,7 @@ var TAS = TAS || {
 	
 	startSlideshow: function(el){
 		var x = 1,
-		slides = el.album.find('img');
+		slides = $(".slides").find('img');
 		
 		somefunction();
 		
@@ -240,9 +242,9 @@ var TAS = TAS || {
 		}
 		var el = window.TAS.elem,
 		index = $this.index(),
-		activeImg = el.album.find('img').eq(index)
+		activeImg = $(".slides").find('img').eq(index)
 		
-		el.album.find('.active').removeClass('active');
+		$(".slides").find('.active').removeClass('active');
 		activeImg.addClass('active');
 		
 		$('.caption .headline').text(activeImg.attr('headline'));
@@ -253,7 +255,7 @@ var TAS = TAS || {
 		$this.attr('class','dot fa fa-dot-circle-o');
 	},
 	
-	// sort menu
+	/// sort menu
 	
 	sortByCategory: function(){
 	},
@@ -294,11 +296,11 @@ var TAS = TAS || {
 		length = parseInt(album.attr("length")),
 		folder = album.attr("folder");
 		//clear thumbnails
-		el.thumbnails.empty()
+		$('.thumbnails').empty()
 		//load new ones
 		for(i;i<length;i++){
 			x = (i * .001).toFixed(3).toString().split(".")[1];
-			el.thumbnails.append('<li><img src="albums/'+folder+'/'+x+'.jpg"></li>');
+			$('.thumbnails').append('<li><img src="albums/'+folder+'/'+x+'.jpg"></li>');
 		}
 	},
 	
@@ -318,6 +320,7 @@ var TAS = TAS || {
 	
 	//manage article
 	openArticle: function(e){
+		console.log("something")
 		//mark as selected
 		$(this).addClass('selected')
 		//define elements
@@ -325,9 +328,10 @@ var TAS = TAS || {
 		//define section
 		section = $(this).parent(el.section);
 		//insert section copy + identify it
-		sectionCopy = el.bookmarks.empty().append(section.clone()).find('.section');
+		// sectionCopy = el.bookmarks.empty().append(section.clone()).find('.section');
+		sectionCopy = $('.bookmarked-articles').empty().append(section.clone()).find('.section');
 		//reset slider
-		el.bookmarks.animate({ scrollTop: "0px" },0);
+		$('.bookmarked-articles').animate({ scrollTop: "0px" },0);
 		//insert selected section before selected
 		sectionCopy.prepend(sectionCopy.find('.selected'));
 		//make bookmark say all + [section name]
@@ -348,14 +352,14 @@ var TAS = TAS || {
 		//show description
 		window.TAS.showDescription($(this));
 		//show static page
-		el.body.addClass('bookmark-open');
+		$("body").addClass('bookmark-open');
 	},
 	//manage article
 	closeArticle: function(event){
 		//access element
 		var el = window.TAS.elem;
 		//hide static page
-		el.body.removeClass('bookmark-open');
+		$("body").removeClass('bookmark-open');
 		
 		if($('.bookmarked-articles .selected').parent('.section').attr('name') === "videos"){
 			el.currentVideo[0].pause();
@@ -418,20 +422,20 @@ var TAS = TAS || {
 	},
 	//global
 	addListeners: function(el){
-		el.bookmarks.on("scroll", this.loadContent);
-		el.document.on("scroll", this.loadContent);
-		el.body.on("click", ".bookmarks .content-box:not('.ads-template')", this.selectArticle);
-		el.body.on("click", ".thumbnails li", this.showPicture);
-		el.body.on("click", ".bookmarks .close,.bookmarked-articles", this.closeArticle);
-		el.body.on("click",".articles .content-box:not('.ads-template')",this.openArticle);
-		el.body.on("click",".load-more",this.loadMore);
-		el.body.on("click",".navigation i",this.slideshow);
-		el.details.on("click",this.toggleOpen);
+		$('.bookmarked-articles').on("scroll", this.loadContent);
+		$(document).on("scroll", this.loadContent);
+		$("body").on("click", ".bookmarks .content-box:not('.ads-template')", this.selectArticle);
+		$("body").on("click", ".thumbnails li", this.showPicture);
+		$("body").on("click", ".bookmarks .close,.bookmarked-articles", this.closeArticle);
+		$("body").on("click",".articles .content-box:not('.ads-template')",this.openArticle);
+		$("body").on("click",".load-more",this.loadMore);
+		$("body").on("click",".navigation i",this.slideshow);
+		$('.details').on("click",this.toggleOpen);
 	},
 	//global
 	init: function(){
-		// this.saveContent(TAS.sections());
-		// this.addPlaceHolders(TAS.sections(),TAS.options);
+		this.saveContent(TAS.sections());
+		this.addPlaceHolders(TAS.sections(),TAS.options);
 		this.loadContent(document);
 		this.addListeners(TAS.elem);	
 		this.setupDots(TAS.elem);
@@ -439,6 +443,6 @@ var TAS = TAS || {
 	}
 }
 
-
-TAS.init();
+$(document).ready(function(){
+	TAS.init();
 });

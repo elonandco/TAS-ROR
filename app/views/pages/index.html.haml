@@ -48,7 +48,7 @@
           %span.place
           %span.title
           %p.description
-  .content-box.videos-template
+  .content-box.videos-template.no-content
     .image
     .player
       %video.video{:controls => "controls", :preload => "none"}
@@ -99,97 +99,145 @@
     .section-name{:name => "videos"} Videos
   .section.events.main{:name => "events"}
     .section-name.event Events
-    -i = 0
-    - 6.times do
-      - i = i + 1
-      -if i==5
-        .content-box.ads-template
-          %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
-            %span Ad Space
-      -else
-        .content-box.events-template
-          .image
-            %img{:src => asset_path("event"+i.to_s+".png")}/
-          .content
-            .overlay
-              .sponsored Sponsored
-              .date
-                %span.dayofweek Friday
-                %span.month Sep. 19
-              .setting
-                %span.type Networking
-                %span.title Young Professionals' Happy Hour
-                %p.description
     .load-more Load More Events
   .section.blogs.main{:name => "blogs"}
     .section-name.blog Blogs
-    -i = 0
-    - 6.times do
-      - i = i + 1
-      -if i==4
-        .content-box.ads-template
-          %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
-            %span Ad Space
-      -else
-        .content-box.blogs-template
-          .image
-            %img{:src => asset_path("blogs"+i.to_s+".png")}/
-          .content
-            .overlay
-              .sponsored Sponsored
-              .setting
-                %span.type Showcase
-                %span.title The Brain Behind Austin's Black Film Festival
-                %p.description
     .load-more Load More Blogs
   .section.pictures.main{:name => "pictures"}
     .section-name.picture Pictures
-    -i = 0
-    - 6.times do
-      - i = i + 1
-      -if i==2
-        .content-box.ads-template
-          %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
-            %span Ad Space
-      -else
-        .content-box.pictures-template
-          .image
-            %img{:src => asset_path("pictures"+i.to_s+".png")}/
-          .content
-            .overlay
-              .sponsored Sponsored
-              .date
-                %span.dayofweek Friday
-                %span.month Sep. 19
-              .setting
-                %span.type Networking
-                %span.title Young Professionals' Happy Hour
-                %p.description
     .load-more Load More Pictures
   .section.videos.main{:name => "videos"}
     .section-name.video Videos
-    -i = 0
-    - 6.times do
-      - i = i + 1
-      -if i==6
-        .content-box.ads-template
-          %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
-            %span Ad Space
-      -else
-        .content-box.videos-template
-          .image
-            %img{:src => asset_path("videos"+i.to_s+".png")}/
-          .content
-            .overlay
-              .sponsored Sponsored
-              .date
-                %span.dayofweek Friday
-                %span.month Sep. 19
-              .setting
-                %span.type Networking
-                %span.title Young Professionals' Happy Hour
-                %p.description    
     .load-more Load More Videos
+
+/ .articles
+/   .header
+/     .search-fields
+/       .category.search
+/         .selected-link
+/           %span.header-text I want to see:
+/           %span.currently-selected Events
+/           .arrow-up
+/         .menu
+/           %li.selected Events
+/           %li Blogs
+/           %li Pictures
+/           %li Videos
+/       .date.search
+/         .selected-link
+/           %span.header-text I want to go:
+/           %span.currently-selected This Week
+/           .arrow-up
+/         .menu
+/           %li{:value => "Today"} Today
+/           %li.selected{:value => "This Week"} This Week
+/           %li{:value => "Next Week"} Next Week
+/           %li{:value => "This Month"} This Month
+/       .type.search
+/         .selected-link
+/           %span.header-text For only these type:
+/           %span.currently-selected All Types
+/           .arrow-up
+/         .menu
+/           %li.selected{:value => "All"} All Types
+/   .section-header
+/     .section-name{:name => "events"} Events
+/     .section-name{:name => "blogs"} Blogs
+/     .section-name{:name => "pictures"} Pictures
+/     .section-name{:name => "videos"} Videos
+/   .section.events.main{:name => "events"}
+/     .section-name.event Events
+/     -i = 0
+/     - 6.times do
+/       - i = i + 1
+/       -if i==5
+/         .content-box.ads-template
+/           %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+/             %span Ad Space
+/       -else
+/         .content-box.events-template
+/           .image
+/             %img{:src => asset_path("event"+i.to_s+".png")}/
+/           .content
+/             .overlay
+/               .sponsored Sponsored
+/               .date
+/                 %span.dayofweek Friday
+/                 %span.month Sep. 19
+/               .setting
+/                 %span.type Networking
+/                 %span.title Young Professionals' Happy Hour
+/                 %p.description
+/     .load-more Load More Events
+/   .section.blogs.main{:name => "blogs"}
+/     .section-name.blog Blogs
+/     -i = 0
+/     - 6.times do
+/       - i = i + 1
+/       -if i==4
+/         .content-box.ads-template
+/           %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+/             %span Ad Space
+/       -else
+/         .content-box.blogs-template
+/           .image
+/             %img{:src => asset_path("blogs"+i.to_s+".png")}/
+/           .content
+/             .overlay
+/               .sponsored Sponsored
+/               .setting
+/                 %span.type Showcase
+/                 %span.title The Brain Behind Austin's Black Film Festival
+/                 %p.description
+/     .load-more Load More Blogs
+/   .section.pictures.main{:name => "pictures"}
+/     .section-name.picture Pictures
+/     -i = 0
+/     - 6.times do
+/       - i = i + 1
+/       -if i==2
+/         .content-box.ads-template
+/           %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+/             %span Ad Space
+/       -else
+/         .content-box.pictures-template
+/           .image
+/             %img{:src => asset_path("pictures"+i.to_s+".png")}/
+/           .content
+/             .overlay
+/               .sponsored Sponsored
+/               .date
+/                 %span.dayofweek Friday
+/                 %span.month Sep. 19
+/               .setting
+/                 %span.type Networking
+/                 %span.title Young Professionals' Happy Hour
+/                 %p.description
+/     .load-more Load More Pictures
+/   .section.videos.main{:name => "videos"}
+/     .section-name.video Videos
+/     -i = 0
+/     - 6.times do
+/       - i = i + 1
+/       -if i==6
+/         .content-box.ads-template
+/           %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+/             %span Ad Space
+/       -else
+/         .content-box.videos-template
+/           .image
+/             %img{:src => asset_path("videos"+i.to_s+".png")}/
+/           .content
+/             .overlay
+/               .sponsored Sponsored
+/               .date
+/                 %span.dayofweek Friday
+/                 %span.month Sep. 19
+/               .setting
+/                 %span.type Networking
+/                 %span.title Young Professionals' Happy Hour
+/                 %p.description    
+/     .load-more Load More Videos
 .bookmarks
   .bookmarked-articles
     .section.events{:name => "events"}
