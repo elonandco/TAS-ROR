@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_date: 2016-12-28 13:22:49
+  start_time: 2016-12-28 13:22:49
+  end_time: 2016-12-28 13:22:49
+  event_type: MyString
+  title: MyString
+  place: MyString
+  description: MyString
+  image: MyString
+  sponsored: MyString
+  ad: MyString
+
+two:
+  event_date: 2016-12-28 13:22:49
+  start_time: 2016-12-28 13:22:49
+  end_time: 2016-12-28 13:22:49
+  event_type: MyString
+  title: MyString
+  place: MyString
+  description: MyString
+  image: MyString
+  sponsored: MyString
+  ad: MyString

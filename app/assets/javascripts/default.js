@@ -23,28 +23,28 @@ var TAS = TAS || {
 	},
 	// global
 	events: {
-		data: "assets/events.xml",
+		data: "/pages/events",
 		loaded: 0,
 		name: "events",
 		content: "",
 		adIndex: 4
 	},
 	blogs: {
-		data: "assets/blogs.xml",
+		data: "/pages/blogs",
 		loaded: 0,
 		name: "blogs",
 		content: "",
 		adIndex: 4
 	},
 	pictures: {
-		data: "assets/pictures.xml",
+		data: "/pages/pictures",
 		loaded: 0,
 		name: "pictures",
 		content: "",
 		adIndex: 4
 	},
 	videos: {
-		data: "assets/videos.xml",
+		data: "/pages/videos",
 		loaded: 0,
 		name: "videos",
 		content: "",
@@ -290,19 +290,20 @@ var TAS = TAS || {
 	},
 	
 	//manage pictures
-	loadAlbum: function(album, el){
-		var x,
-		i = 0,
-		length = parseInt(album.attr("length")),
-		folder = album.attr("folder");
-		//clear thumbnails
-		$('.thumbnails').empty()
-		//load new ones
-		for(i;i<length;i++){
-			x = (i * .001).toFixed(3).toString().split(".")[1];
-			$('.thumbnails').append('<li><img src="albums/'+folder+'/'+x+'.jpg"></li>');
-		}
-	},
+	// loadAlbum: function(album, el){
+	// 	var x,
+	// 	i = 0,
+	// 	length = parseInt(album.attr("length")),
+	// 	folder = album.attr("folder");
+	// 	//clear thumbnails
+	// 	$('.thumbnails').empty()
+	// 	//load new ones
+	// 	for(i;i<length;i++){
+	// 		x = (i * .001).toFixed(3).toString().split(".")[1];
+	// 		$('.thumbnails').append('<li><img src="albums/'+folder+'/'+x+'.jpg"></li>');
+	// 	}
+	// 	console.log(folder);
+	// },
 	
 	//manage article
 	showDescription: function(box){
@@ -314,7 +315,7 @@ var TAS = TAS || {
 			$('.article-'+className[i]).html(box.find('.'+className[i]).text());	
 		}
 		if(section === "pictures"){
-			window.TAS.loadAlbum(box, window.TAS.elem);		
+			// window.TAS.loadAlbum(box, window.TAS.elem);		
 		}
 	},	
 	
@@ -338,7 +339,7 @@ var TAS = TAS || {
 		sectionCopy.find('.section-name').removeAttr('style')[0].innerHTML = "Other " + section.attr('name');
 		
 		if(section.attr('name') === "pictures"){
-			window.TAS.loadAlbum(sectionCopy.find('.selected'), el);		
+			// window.TAS.loadAlbum(sectionCopy.find('.selected'), el);		
 		}
 		
 		if((section.attr('name') === "videos")){
