@@ -205,10 +205,16 @@ var TAS = TAS || {
 		var i = 1;
 		//make a dot for each image in slideshow
 		for(i;i<$(".slides").find('img').length;i++){
-			$('.dot:eq(0)').clone().appendTo('.navigation');		
+			$('.dot:eq(0)').clone().appendTo('.navigation');
 		}
 		//show first slide as being active
-		$('.dot:eq(0)').attr('class','dot fa fa-dot-circle-o')
+		$('.dot:eq(0)').attr('class','dot fa fa-dot-circle-o')	
+		$(".slider-date1").addClass("active-slider-date");
+
+		function ChangeStyleNext(pos) {
+			$(".slider-date").removeClass("active-slider-date");
+		    $(".slider-date"+ pos).addClass("active-slider-date");		
+		}
 	},
 	
 	startSlideshow: function(el){
@@ -253,6 +259,26 @@ var TAS = TAS || {
 		
 		$('.fa-dot-circle-o').attr('class','dot fa fa-circle-o');
 		$this.attr('class','dot fa fa-dot-circle-o');
+
+		var l = $(".dot").length;
+		var lall =$(".fa-dot-circle-o").nextAll(".dot").length;
+		var pos = (l - lall);
+		pos = pos == 5 ? 1 : pos
+
+		if (pos == 1) {
+			ChangeStyleNext(pos);
+		}else if (pos == 2) {
+			ChangeStyleNext(pos);
+		}else if (pos == 3) {
+			ChangeStyleNext(pos);
+		}else if (pos == 4) {
+			ChangeStyleNext(pos);
+		}	
+
+		function ChangeStyleNext(pos) {
+			$(".slider-date").removeClass("active-slider-date");
+		    $(".slider-date"+ pos).addClass("active-slider-date");		
+		}
 	},
 	
 	/// sort menu
@@ -446,4 +472,69 @@ var TAS = TAS || {
 
 $(document).ready(function(){
 	TAS.init();
+
+	$(".slides-previous").on('click',function(){	
+		var l = $(".dot").length;
+		var lall =$(".fa-dot-circle-o").nextAll(".dot").length;
+		var pos = (l - lall) - 1;
+		pos = pos == 0 ? 4 : pos
+		$(".dot:nth-of-type("+ pos  +")" ).trigger( "click" );
+
+		if (pos == 1) {
+			ChangeStylePrev(pos)
+		}else if (pos == 2) {
+			ChangeStylePrev(pos)
+		}else if (pos == 3) {
+			ChangeStylePrev(pos)
+		}else if (pos == 4) {
+			ChangeStylePrev(pos)
+		}
+	});
+
+	$(".slides-next").on('click',function(){
+		var l = $(".dot").length;
+		var lall =$(".fa-dot-circle-o").nextAll(".dot").length;
+		var pos = (l - lall) + 1;
+		pos = pos == 5 ? 1 : pos
+		$(".dot:nth-of-type("+ pos  +")" ).trigger( "click" );
+
+		if (pos == 1) {
+			ChangeStyleNext(pos);
+		}else if (pos == 2) {
+			ChangeStyleNext(pos);
+		}else if (pos == 3) {
+			ChangeStyleNext(pos);
+		}else if (pos == 4) {
+			ChangeStyleNext(pos);
+		}
+		
+		console.log(pos-1);
+	});
+
+	function ChangeStyleNext(pos) {
+		$(".slider-date").removeClass("active-slider-date");
+	    $(".slider-date"+ pos).addClass("active-slider-date");		
+	}
+
+	function ChangeStylePrev(pos) {
+	    $(".slider-date").removeClass("active-slider-date");
+	    $(".slider-date"+ pos).addClass("active-slider-date");
+	}
+	// $(function() {
+ //      $('#slides').slidesjs({
+ //        width: 940,
+ //        height: 528,
+ //        navigation: {
+ //          effect: "fade"
+ //        },
+ //        pagination: {
+ //          effect: "fade"
+ //        },
+ //        effect: {
+ //          fade: {
+ //            speed: 400
+ //          }
+ //        }
+ //      });
+ //    });
 });

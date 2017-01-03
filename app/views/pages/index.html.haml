@@ -7,9 +7,19 @@
     %img.fashion{:desc => "An exclusive list of Austin Trendsetters", :headline => "Best dressed in Austin", :src => asset_path("fashion.jpg")}/
   .navigation
     %i.dot.fa.fa-circle-o
+  .div
+    %a.fa.fa-long-arrow-left.slides-previous
+    %a.fa.fa-long-arrow-right.slides-next
   .caption
     %span.headline
     %span.description
+    .caption-learn
+      .learn-more LEARN MORE
+  .slider-footer
+    .slider-date1.slider-date FRIDAY SEP. 19
+    .slider-date2.slider-date SATURDAY SEP. 20
+    .slider-date3.slider-date THURSDAY SEP. 26
+    .slider-date4.slider-date FRIDAY SEP. 27
 .templates
   .content-box.ads-template
     %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
@@ -92,6 +102,9 @@
           .arrow-up
         .menu
           %li.selected{:value => "All"} All Types
+  / .div
+  /   %i.fa.fa-long-arrow-left.slides-previous{ style: "color: red; font-size: 5em"}
+  /   %i.fa.fa-long-arrow-right.slides-next{ style: "color: red; font-size: 5em"}
   .section-header
     .section-name{:name => "events"} Events
     .section-name{:name => "blogs"} Blogs
@@ -109,6 +122,7 @@
   .section.videos.main{:name => "videos"}
     .section-name.video Videos
     .load-more Load More Videos
+
 
 / .articles
 /   .header

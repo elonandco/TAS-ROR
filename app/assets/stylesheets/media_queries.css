@@ -1,0 +1,5 @@
+@media screen and (max-height: 775px) {
+    .div {
+        bottom: 100px !important;
+    }
+}
