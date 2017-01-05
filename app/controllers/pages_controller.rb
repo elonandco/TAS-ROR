@@ -1,9 +1,17 @@
 class PagesController < ApplicationController
   def index
+    @events = Event.all.order("event_date asc")
+
+    @type = params[:type]
+
+    @event_ids = Event.all.order("id asc").pluck(:id).join(", ")
+    @blog_ids = Blog.all.order("id asc").pluck(:id).join(", ")
+    @pic_ids = Picture.all.order("id asc").pluck(:id).join(", ")
+    @video_ids = Video.all.order("id asc").pluck(:id).join(", ")
   end
 
   def blogs
-  	blogs = Blog.all
+  	blogs = Blog.all.order("id asc")
 
     @blogs = []
 
@@ -41,7 +49,7 @@ class PagesController < ApplicationController
   end
 
   def pictures
-    pictures = Picture.all
+    pictures = Picture.all.order("id asc")
 
     @pictures = []
 
@@ -63,7 +71,7 @@ class PagesController < ApplicationController
   end
 
   def videos
-    videos = Video.all
+    videos = Video.all.order("id asc")
 
     @videos = []
 

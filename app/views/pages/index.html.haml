@@ -1,3 +1,8 @@
+%input#type{type: "hidden", value: "#{@type}"}
+%input#event_ids{type: "hidden", value: "#{@event_ids}"}
+%input#blog_ids{type: "hidden", value: "#{@blog_ids}"}
+%input#pic_ids{type: "hidden", value: "#{@pic_ids}"}
+%input#video_ids{type: "hidden", value: "#{@video_ids}"}
 .logo
 .slideshow
   .slides
@@ -26,7 +31,6 @@
       %span Ad Space
   .content-box.events-template.no-content
     .image
-      %img{:src => asset_path("event1.png")}/
     .content
       .overlay
         .sponsored
@@ -36,6 +40,7 @@
         .setting
           %span.type
           %span.title
+          %span.id
           %p.description
   .content-box.blogs-template.no-content
     .image
@@ -45,6 +50,7 @@
         .setting
           %span.type
           %span.title
+          %span.id
           %p.description
   .content-box.pictures-template.no-content
     .image
@@ -57,6 +63,7 @@
         .setting
           %span.place
           %span.title
+          %span.id
           %p.description
   .content-box.videos-template.no-content
     .image
@@ -71,6 +78,7 @@
         .setting
           %span.place
           %span.title
+          %span.id
           %p.description
 .articles
   .header
@@ -263,14 +271,17 @@
     .section.pictures{:name => "pictures"}
       .section-name.picture Scroll to see more Pictures
       .load-more Load More Picture
-    .section.videos{:name => "videos"}
+    .section.videos#ev{:name => "videos"}
       .section-name.video Scroll to see more Videos
       .load-more Load More Videos
   .main-description
     .close
       %i.fa.fa-times
     .share
-      %i.fa.fa-facebook
+      / %a.fb-share{href: "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}"}
+      %a.fb-share-btn
+        %i.fa.fa-facebook   
+      %a.fb-share{:href => "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}&picture=#{request.original_url}/assets/event1.png&title=title+here&description=Your+description", :onclick => "window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;", :target => "_blank", style: "display: none"}   
       %i.fa.fa-twitter
     .desc
       %span.article-type
