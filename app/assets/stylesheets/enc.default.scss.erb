@@ -414,9 +414,10 @@ html, body {
     display: flex;
     top: 625px;
     background: #FFF;
-    z-index: 5;
+    z-index: 3;
     color: #acacac;
     font-size: 18px;
+    overflow: hidden;
 }
 .slider-date1 {
 	width: 25%;
@@ -444,6 +445,23 @@ html, body {
 
 /* Article Grid */
 
+// .articles {
+// 	margin-top: 350px;
+// 	background: #fff;
+// 	text-align: center;
+// 	padding: 70px 0 70px 0;
+// 	box-shadow: 0 0 5px #000;
+// 	overflow: hidden;
+// 	background-image: url("<%= asset_path("Brick_BG.png") %>");
+// 	position: relative;
+// 	margin-bottom: 200px;
+// 	background-attachment: fixed;
+//     background-size: cover;
+//     background-position: 100% 100%;
+//     background-repeat: no-repeat;
+//     //min-height: 915px;
+//     //min-width: 100%;
+// }
 .articles {
 	margin-top: 350px;
 	background: #fff;
@@ -454,6 +472,9 @@ html, body {
 	background: url("<%= asset_path("texture.jpg") %>");
 	position: relative;
 	margin-bottom: 200px;
+}
+.setting .id {
+	display: none;
 }
 .section {
 	overflow: hidden;
@@ -1013,7 +1034,7 @@ html, body {
 	display: block;
 }
 .bookmark-open .bookmarks {
-	z-index: 3;
+	z-index: 5;
 	background: rgba(000, 000, 000, 0.8);
 	visibility: visible;
 	-webkit-transition: all 0.4s;
@@ -1179,4 +1200,8 @@ to {
 .search-fields {
 	display: none;
 }
+}
+.share > a:visited, .share > a:active, .share a {
+	text-decoration: none;
+	color: #fff;
 }

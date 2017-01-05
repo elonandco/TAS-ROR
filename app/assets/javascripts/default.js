@@ -158,6 +158,10 @@ var TAS = TAS || {
 	// manage content		
 	loadContent: function(e){	
 		//determine scroller 
+		var event_ids = $("#event_ids").val().split(", ");
+		var blog_ids = $("#blog_ids").val().split(", ");
+		var pic_ids = $("#pic_ids").val().split(", ");
+		var video_ids = $("#video_ids").val().split(", ");
 		var area = $(".bookmark-open").length ? "bookmarked-articles" : "articles",
 		//access other variables
 		$this = window.TAS;
@@ -173,7 +177,9 @@ var TAS = TAS || {
 			//toggle header 
 			$this.toggleHeader($this.elem);
 		}
-		//only target div's with no content				
+		//only target div's with no content		
+		var type_id = ""
+		var i = 0
 		$('.'+area+' .no-content').each(function(){
 			var box = $(this),
 			//define elements scroll top
@@ -182,15 +188,31 @@ var TAS = TAS || {
 			if(elemTop < window.innerHeight){	
 				//get section name
 				section = box.parent('.section').attr("name");
-				// console.log(section)
+				
 				//mark as having content
+				
+				// console.log(type_id);
 				box.removeClass('no-content');
+				
 				//now, insert the content for each div within box
 				$this[section].content.children('article').eq($this[section].loaded).children().each(function(){
 					// console.log($(this)[0].nodeName + " " + box.attr("name"))
 					$this.insertContent($(this),box);
 				})
-				$this[section].loaded++
+				i = $this[section].loaded++
+
+				if (section == "events") {
+					type_id = section + event_ids[i];
+				}else if (section == "blogs") {
+					type_id = section + blog_ids[i];
+				}else if (section == "pictures") {
+					type_id = section + pic_ids[i];
+				}else if (section == "videos") {
+					type_id = section + video_ids[i];
+				}
+				
+				box.attr('id', type_id);
+				console.log(section);
 			}else{
 				return false;	
 			} 
@@ -347,6 +369,7 @@ var TAS = TAS || {
 	
 	//manage article
 	openArticle: function(e){
+		// $('head').append( '<meta name="description" content="this is new">' );
 		console.log("something")
 		//mark as selected
 		$(this).addClass('selected')
@@ -388,6 +411,7 @@ var TAS = TAS || {
 		//hide static page
 		$("body").removeClass('bookmark-open');
 		
+		
 		if($('.bookmarked-articles .selected').parent('.section').attr('name') === "videos"){
 			el.currentVideo[0].pause();
 		}
@@ -404,6 +428,7 @@ var TAS = TAS || {
     //manage article
 	selectArticle: function(e){
 		//clicked element
+
 		var el = window.TAS.elem,
 		clickedElem = $(this),
 		//top attribute
@@ -425,6 +450,7 @@ var TAS = TAS || {
 				el.currentVideo[0].play();
 			},100)
 		}
+		// console.log(clickedElem[0].textContent.trim());
 		
 		//add selected class
 		clickedElem.addClass('selected');
@@ -471,7 +497,26 @@ var TAS = TAS || {
 }
 
 $(document).ready(function(){
+
 	TAS.init();
+	var type = $("#type").val();
+	setTimeout(function(){
+		
+		if (type != "") {
+			$("#"+type).trigger( "click" );
+			// document.getElementById('events12').click();
+			console.log(type);
+		}		
+	},1000)
+
+	if (type != "") {
+		$('html, body').animate({
+	       	scrollTop: $('#ev').offset().top
+	   	}, 'slow');
+	}
+
+	console.log(type);
+	
 
 	$(".slides-previous").on('click',function(){	
 		var l = $(".dot").length;
@@ -520,6 +565,42 @@ $(document).ready(function(){
 	    $(".slider-date").removeClass("active-slider-date");
 	    $(".slider-date"+ pos).addClass("active-slider-date");
 	}
+
+	function Trigger() {
+		setTimeout(function(){
+		var type = $("#type").val();
+			if (type != "") {
+				$("#events12").trigger( "click" );
+				// document.getElementById('events12').click();
+				console.log(type);
+			}		
+		},1000)
+	} 
+
+	$('.fb-share-btn').click(function(e) {
+		var type = "";
+		if ($(".selected").hasClass("events-template")) {
+			type = "events";
+		}else if ($(".selected").hasClass("blogs-template")) {
+			type = "blogs";
+		}else if ($(".selected").hasClass("videos-template")) {
+			type = "videos";
+		}else if ($(".selected").hasClass("pictures-template")) {
+			type = "pictures";
+		}
+		var id = $(".section").children(".selected").last().find(".id").html();
+		var image = window.location.host + "/" + $(".section").children(".selected").last().find(".image > img").attr("src");
+		var title = $(".section").children(".selected").last().find(".title").html();
+		var descr = $(".section").children(".selected").last().find(".description").html();
+		$(".fb-share").attr("href", "https://www.facebook.com/sharer/sharer.php?u=" + window.location.host + "?type="+type + id+"&picture="+ image +"&title="+title+"&description="+descr)
+        				.trigger("click");
+		// console.log(id);
+		// console.log(title);
+		// console.log(image);
+		// console.log(descr);
+    });
+
+
 	// $(function() {
  //      $('#slides').slidesjs({
  //        width: 940,
@@ -538,3 +619,13 @@ $(document).ready(function(){
  //      });
  //    });
 });
+function fbShare(url, title, descr, image, winWidth, winHeight) {
+
+	var url = window.location
+	var image = window.location + $(".selected > .image > img").attr("src");
+	var title = $(".selected > .content > .overlay > .setting > .title").html();
+	var descr = $(".selected > .content > .overlay > .setting > .description").html();
+    var winTop = (screen.height / 2) - (winHeight / 2);
+    var winLeft = (screen.width / 2) - (winWidth / 2);
+    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+}
