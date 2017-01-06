@@ -86,13 +86,13 @@
       .category.search
         .selected-link
           %span.header-text I want to see:
-          %span.currently-selected Events
+          %span.currently-selected Event
           .arrow-up
         .menu
           %li.selected Events
-          %li Blogs
           %li Pictures
-          %li Videos
+          %li Blogs
+          %li Vlogs
       .date.search
         .selected-link
           %span.header-text I want to go:
@@ -100,9 +100,10 @@
           .arrow-up
         .menu
           %li{:value => "Today"} Today
+          %li{:value => "Tomorrow"} Tomorrow
           %li.selected{:value => "This Week"} This Week
-          %li{:value => "Next Week"} Next Week
           %li{:value => "This Month"} This Month
+          %li{:value => "Next Three Months"} Next Three Months
       .type.search
         .selected-link
           %span.header-text For only these type:
@@ -110,6 +111,15 @@
           .arrow-up
         .menu
           %li.selected{:value => "All"} All Types
+          %li{:value => "Afterparty"} Afterparty
+          %li{:value => "Bar/Lounge"} Bar/Lounge
+          %li{:value => "Boat Party"} Boat Party
+          %li{:value => "Brunch"} Brunch
+          %li{:value => "Charity Event"} Charity Event
+          %li{:value => "Concert"} Concert
+          %li{:value => "Fashion Show"} Fashion Show
+          %li{:value => "Meetup"} Meetup
+          %li{:value => "Museum"} Museum
   / .div
   /   %i.fa.fa-long-arrow-left.slides-previous{ style: "color: red; font-size: 5em"}
   /   %i.fa.fa-long-arrow-right.slides-next{ style: "color: red; font-size: 5em"}

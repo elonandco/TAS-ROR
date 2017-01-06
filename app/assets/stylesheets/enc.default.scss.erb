@@ -143,16 +143,19 @@ html, body {
 	margin: 0 5px;
 	position: relative;
 }
-.search-fields .search:hover {
+.search-fields .search:hover{
 	background: #f1f1f1;
 }
-.search-fields .search:hover .header-text {
+.search-fields .search:hover .selected-link{
+	height: 70px;
+}
+.search-fields .search:hover .header-text{
 	color: #5b5b5b;
 }
-.search-fields .search:hover .arrow-up {
+.search-fields .search:hover .arrow-up{
 	border-bottom: 5px solid #202326;
 }
-.search-fields .search:hover .currently-selected {
+.search-fields .search:hover .currently-selected{
 	color: #404040;
 }
 
@@ -249,6 +252,7 @@ html, body {
 	color: #fff;
 	border-left: 1px solid #3e4145;
 	border-right: 1px solid #3e4145;
+	border-bottom: 5px solid #45ad58;
 }
 
 .arrow-up {
@@ -296,21 +300,21 @@ html, body {
 
 .menu li {
 	list-style: none;
-	margin: 15px 20px 0 20px;
+	margin: 10px 20px 0 20px;
 	font-size: 14px;
 	text-align: left;
 	text-transform: none;
-	border-bottom: solid 1px #fff;
-	padding: 0 0 15px 0;
+	padding: 0 0 5px 0;
 }
 
 .menu li.selected,.menu li:hover {
-	list-style-type: inherit;
+	list-style-type: none;
 	color: #45ad58;
 }
 
 .menu li:last-child {
 	border: none;	
+	padding: 0 0 10px 0;
 }
 
 .search-fields {
@@ -706,7 +710,7 @@ html, body {
 	clear: both;
 	margin: 0;
 	text-transform: uppercase;
-	font-family: 'Raleway', sans-serif;
+	/*font-family: 'Raleway', sans-serif;*/
 	padding: 0;
 }
 .date .month {
