@@ -88,6 +88,7 @@ html, body {
 }
 .search.clicked {
 	overflow: visible;
+	background: #f1f1f1;
 }
 .content-box.videos-template .player {
 	visibility: hidden;
@@ -112,42 +113,74 @@ html, body {
 	opacity: 1;
 	overflow:visible;
 }
+.search.clicked .selected-link .header-text{
+  color: #5b5b5b;
+}
+.search.clicked .selected-link .arrow-up{
+  border-bottom: 5px solid #202326;
+}
+.search.clicked .selected-link .currently-selected{
+  color: #404040;
+}
 
 .logo {
 	background-image: url("<%= asset_path("White_Logo.png") %>");
 	height: 85px;
-	width: 300px;
+	width: 271px;
 	position: fixed;
 	background-size: 75% auto;
-	background-position: center 3px;
+	background-position: center 9px;
 	background-repeat: no-repeat;
 	z-index: 3;
 	top: 0px;
 	-webkit-transition: -webkit-transform 0.2s ease-in-out;
+	background-position-x: 15px;
 }
 .fixed .logo {
 	-webkit-transform: scale(0.8);
 	top: -8px;
-	background-position: center -75px;
+	background-position: center -68px;
+  background-position-x: 6px;;
 }
 
 .header .category, 
 .header .date, 
-.header .type {
+.header .type,
+.header .search-box {
 	color: #fff;
 	text-align: left;
 	float: left;
-	width: 190px;
+	width: 160px;
 	clear: none;
 	padding: 0;
-	margin: 0 5px;
+	margin: 0 0px;
 	position: relative;
+}
+.search-box form{
+	width: 234px;
+	padding: 25px 10px;
+}
+.search-box form div{
+	display: inline;
+}
+.search-box .header-input {
+	border: 0 solid;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  width: 120px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bold;
+}
+.search-box .header-input:focus {
+	outline:none;
+}
+a.search-btn {
+  background: #45ad58;
+	padding: 12px 5px;
 }
 .search-fields .search:hover{
 	background: #f1f1f1;
-}
-.search-fields .search:hover .selected-link{
-	height: 70px;
 }
 .search-fields .search:hover .header-text{
 	color: #5b5b5b;
@@ -264,6 +297,16 @@ html, body {
 	right: 15px;
 	top: 43px;
 }
+.caret {
+  position: inherit;
+  font-size: 21px;
+  line-height: 0;
+  display: block;
+  text-align: center;
+  margin-top: -14px;
+  height: 14px;
+  color: black;
+}
 .thumbnails {
 	display: none;
 	margin: 0 0 0 -10px;
@@ -295,16 +338,17 @@ html, body {
 	border-top: solid 1px #fff;
 	font-weight: normal;
 	opacity: 0;
+	margin-top: 12px;
 	-webkit-transition: opacity 0.2s ease-in-out;
 }
 
 .menu li {
 	list-style: none;
-	margin: 10px 20px 0 20px;
+	margin: 9px 20px 0 20px;
 	font-size: 14px;
 	text-align: left;
 	text-transform: none;
-	padding: 0 0 5px 0;
+	padding: 0 0 9px 0;
 }
 
 .menu li.selected,.menu li:hover {
@@ -320,7 +364,7 @@ html, body {
 .search-fields {
 	width: auto;
 	cursor: pointer;
-	margin: 0 0 0 300px;
+	margin: 0 0 0 232px;
 	overflow: hidden;
 }
 

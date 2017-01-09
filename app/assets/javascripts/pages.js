@@ -1,31 +1,49 @@
 $(document).ready(function(){
-  $("div.search .selected-link").click(function(){
+  /* Dropdown menu */
+  var searchFields = [], i=0;
+  $("div.search-fields").children("div.search").each(function(){
+    searchFields[i] = ($(this).find(".menu").height()+17);
+    i++;
+  });
+  $(".selected-link").mouseover(function(){
+    $(this).height(65);
+  }).mouseout(function(){
+    if($(this).next().css("opacity") == 0)
+      $(this).height(70);
+  });
+
+  $(".selected-link").click(function(){
+    $(this).height(70);
     var menu = $(this).next(),
-        search = $(this).parent()
+        search = $(this).parent(),
         currentH = $(this).height();
     if(search.height() == $(this).height()) {
-      $("div.search-fields").children("div").each(function(){
-        resetSearch();
-        $(this).height($(this).height()-5);
-        $(this).children(".menu").css("opacity", "0");
-        $(this).find(".selected-link").height(70);
-        $(this).height($(this).find(".selected-link").height());  
-      });
+      resetSearchFields();
+      $(this).parent("div").addClass("clicked");
       search.height(menu.height() + (search.height() + 5) + "px");
-      menu.css("opacity","1");
       $(this).height(currentH-5);
       menu.height(menu.height()+5);
     }
     else {
-      $(this).height(currentH+5);
-      menu.css("opacity", "0");
+      $(this).parent("div").removeClass("clicked");
       menu.height(menu.height()-5);
       search.height($(this).height() + "px");
     }
   });
-  function resetSearch(){
-    $(".category .menu").height(134);
-    $(".date .menu").height(166);
-    $(".type .menu").height(326);
+
+  $(".search-box").click(function(){
+    resetSearchFields();
+  });
+
+  function resetSearchFields(){
+    var i=0;
+    $("div.search-fields").children("div").each(function(){
+      $(this).removeClass("clicked");
+      $(this).height($(this).height()-5);
+      $(this).children(".menu").height(searchFields[i]);
+      $(this).find(".selected-link").height(70);
+      $(this).height($(this).find(".selected-link").height());
+      i++;
+    });
   }
 });

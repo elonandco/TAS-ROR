@@ -89,6 +89,8 @@
           %span.currently-selected Event
           .arrow-up
         .menu
+          .caret
+            %i.fa.fa-caret-up
           %li.selected Events
           %li Pictures
           %li Blogs
@@ -99,6 +101,8 @@
           %span.currently-selected This Week
           .arrow-up
         .menu
+          .caret
+            %i.fa.fa-caret-up
           %li{:value => "Today"} Today
           %li{:value => "Tomorrow"} Tomorrow
           %li.selected{:value => "This Week"} This Week
@@ -110,6 +114,8 @@
           %span.currently-selected All Types
           .arrow-up
         .menu
+          .caret
+            %i.fa.fa-caret-up
           %li.selected{:value => "All"} All Types
           %li{:value => "Afterparty"} Afterparty
           %li{:value => "Bar/Lounge"} Bar/Lounge
@@ -120,6 +126,13 @@
           %li{:value => "Fashion Show"} Fashion Show
           %li{:value => "Meetup"} Meetup
           %li{:value => "Museum"} Museum
+      .search-box{style: "float:right; margin-right:74px;"}
+        %form.form-inline
+          .input-prepend
+            %span.add-on
+              %i.fa.fa-search
+            %input.header-input{type: "text", placeholder: "Search for event", id: "prependedInput"}
+          %a.btn.search-btn SEARCH
   / .div
   /   %i.fa.fa-long-arrow-left.slides-previous{ style: "color: red; font-size: 5em"}
   /   %i.fa.fa-long-arrow-right.slides-next{ style: "color: red; font-size: 5em"}
