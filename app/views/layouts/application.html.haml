@@ -7,7 +7,7 @@
     %link{:href => "http://fonts.googleapis.com/css?family=Lato|Raleway:300,400,500,600,800|Fjalla+One|Source+Sans+Pro|Montserrat:400,700", :rel => "stylesheet", :type => "text/css"}/
     %title TAS
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application'
+    = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
     = yield

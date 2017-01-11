@@ -16,4 +16,5 @@
 //= #require jquery.js
 //= require video.js
 //= require default.js
+//= require pages.js
 //= require_tree .
