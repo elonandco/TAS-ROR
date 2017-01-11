@@ -3,9 +3,9 @@
 %input#blog_ids{type: "hidden", value: "#{@blog_ids}"}
 %input#pic_ids{type: "hidden", value: "#{@pic_ids}"}
 %input#video_ids{type: "hidden", value: "#{@video_ids}"}
-.logo
-.slideshow
-  .slides
+.logo{ style: "position: absolute"}
+.slideshow  
+  .slides    
     %img.kung-fu{:desc => "So it appears we're not invited", :headline => "Racism in Kung Fu", :src => asset_path("kung_fu_saloon.jpg")}/
     %img{:desc => "Ten Events You Cannot Miss", :headline => "Austin Fashion Weeks", :src => asset_path("slideshow.jpg") }/
     %img.perlas{:desc => "From Franklins to Biscuits and Groovy", :headline => "Top Ten Places to Eat", :src => asset_path("perlas.jpg")}/
@@ -15,7 +15,16 @@
   .div
     %a.fa.fa-long-arrow-left.slides-previous
     %a.fa.fa-long-arrow-right.slides-next
-  .caption
+  .caption    
+    .caption-text
+      %span ADD EVENT
+      %span SIGN UP
+      %span LOG IN
+    .caption-icons
+      %a.circle.green
+      %a.circle
+      %a.circle
+      %a.circle
     %span.headline
     %span.description
     .caption-learn
@@ -305,7 +314,15 @@
       %a.fb-share-btn
         %i.fa.fa-facebook   
       %a.fb-share{:href => "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}&picture=#{request.original_url}/assets/event1.png&title=title+here&description=Your+description", :onclick => "window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;", :target => "_blank", style: "display: none"}   
-      %i.fa.fa-twitter
+      %a.twitter-share-btn
+        %i.fa.fa-twitter
+      %a.twitter-share{:href => "https://twitter.com/intent/tweet?text=dssdsd", :onclick => "window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=300'); return false;", :target => "_blank", style: "display: none"}
+      %i.fa.fa-instagram
+      / %a.twitter-share{:href => "https://twitter.com/share?text='dssdsd'", popup: "width=685,height=500", :target => "_blank", style: "display: none"} 
+      / .twitter-share{"data-description" => "sdsdadad", "data-type" => "twitter", "data-url" => "lvh.me:3000?type=events12", style: "display: none"}
+
+      / "https://twitter.com/share?url={{url}}&text={{description}}",popup:{width:685,height:500}}
+
     .desc
       %span.article-type
       %span.article-title
