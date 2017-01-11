@@ -594,30 +594,37 @@ $(document).ready(function(){
 		var descr = $(".section").children(".selected").last().find(".description").html();
 		$(".fb-share").attr("href", "https://www.facebook.com/sharer/sharer.php?u=" + window.location.host + "?type="+type + id+"&picture="+ image +"&title="+title+"&description="+descr)
         				.trigger("click");
-		// console.log(id);
-		// console.log(title);
-		// console.log(image);
-		// console.log(descr);
+    });    
+
+    $('.twitter-share-btn').click(function(e) {
+		var type = "";
+		if ($(".selected").hasClass("events-template")) {
+			type = "events";
+		}else if ($(".selected").hasClass("blogs-template")) {
+			type = "blogs";
+		}else if ($(".selected").hasClass("videos-template")) {
+			type = "videos";
+		}else if ($(".selected").hasClass("pictures-template")) {
+			type = "pictures";
+		}
+		var id = $(".section").children(".selected").last().find(".id").html();
+		var image = window.location.host + "/" + $(".section").children(".selected").last().find(".image > img").attr("src");
+		var title = $(".section").children(".selected").last().find(".title").html();
+		var descr = $(".section").children(".selected").last().find(".description").html();
+		var hashtag  = "SocialiteApproved, TheAustinSocialite, ATX "; 
+		// \nlink: " + window.location.host + "?type="+type + id
+		// $(".twitter-share").attr("data-type", "");
+		// $(".twitter-share").attr("data-description", "#SocialiteApproved \n#TheAustinSocialite \n#ATX \nlink: " + window.location.href + "?type="+type + id)
+		// 					.trigger("click");
+		// console.log($(".twitter-share").prettySocial());
+		$(".twitter-share").attr("href", "https://twitter.com/intent/tweet?text="+ title +"&hashtags=" + hashtag + "&url=" + window.location.href + "?type="+type + id + "&size=small" )[0].click();
+		// setTimeout(function(){
+		// 	console.log($(".twitter-share")[0].click());
+
+		// },1000)
+        				
+		return false;
     });
-
-
-	// $(function() {
- //      $('#slides').slidesjs({
- //        width: 940,
- //        height: 528,
- //        navigation: {
- //          effect: "fade"
- //        },
- //        pagination: {
- //          effect: "fade"
- //        },
- //        effect: {
- //          fade: {
- //            speed: 400
- //          }
- //        }
- //      });
- //    });
 });
 function fbShare(url, title, descr, image, winWidth, winHeight) {
 
