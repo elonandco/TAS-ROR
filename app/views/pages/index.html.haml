@@ -21,20 +21,54 @@
       %span SIGN UP
       %span LOG IN
     .caption-icons
-      %a.circle.green
-      %a.circle
-      %a.circle
-      %a.circle
+      .circle.event-green
+        / %img.event-cirlce{:src => asset_path("event.png")}
+      .circle.pic-white
+      .circle.video-white
+      .circle.blog-white
     %span.headline
     %span.description
     .caption-learn
       .learn-more LEARN MORE
+    .slider1-arrow-up
+      %i.fa.fa-caret-up
+    .slider2-arrow-up
+      %i.fa.fa-caret-up
+    .slider3-arrow-up
+      %i.fa.fa-caret-up
+    .slider4-arrow-up
+      %i.fa.fa-caret-up
   .slider-footer
-    .slider-date1.slider-date FRIDAY SEP. 19
-    .slider-date2.slider-date SATURDAY SEP. 20
-    .slider-date3.slider-date THURSDAY SEP. 26
-    .slider-date4.slider-date FRIDAY SEP. 27
+    .slider-date1.slider-date 
+      FRIDAY SEP. 19      
+    .slider-date2.slider-date 
+      SATURDAY SEP. 20
+    .slider-date3.slider-date 
+      THURSDAY SEP. 26
+    .slider-date4.slider-date 
+      FRIDAY SEP. 27
 .templates
+  .content-box.event-add-post
+    .event-logo
+      %img.event-image{:src => asset_path("event.png")}
+    .event-post
+      .event-text POST YOUR EVENT FOR FREE
+    .event-learn-more
+      .post-learn-more LEARN HOW
+  .content-box.picture-add-post
+    .event-logo
+      %img.event-image{:src => asset_path("photos.png")}
+    .event-post
+      .event-text ADD PICTURES
+    .event-learn-more
+      .post-learn-more LEARN HOW
+  .content-box.blog-add-post
+    .event-logo
+      %img.event-image{:src => asset_path("videos.png")}
+    .event-post
+      .event-text.blog-text UPLOAD YOUR VIDEO OR BLOG
+    .event-learn-more
+      .post-learn-more LEARN HOW
   .content-box.ads-template
     %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
       %span Ad Space
@@ -95,9 +129,9 @@
       .category.search
         .selected-link
           %span.header-text I want to see:
-          %span.currently-selected Event
+          %span.currently-selected Events
           .arrow-up
-        .menu
+        .menu.this-event
           .caret
             %i.fa.fa-caret-up
           %li.selected Events
@@ -109,20 +143,54 @@
           %span.header-text I want to go:
           %span.currently-selected This Week
           .arrow-up
-        .menu
+        .menu.this-week
           .caret
             %i.fa.fa-caret-up
-          %li{:value => "Today"} Today
-          %li{:value => "Tomorrow"} Tomorrow
-          %li.selected{:value => "This Week"} This Week
-          %li{:value => "This Month"} This Month
-          %li{:value => "Next Three Months"} Next Three Months
+          .menu-section
+            .pick-time
+              PICK A TIME
+              .time-options
+                %form
+                  %input{:name => "vehicle", :type => "checkbox", :value => "Today"}/
+                  Today
+                  %br/
+                  %input{:name => "vehicle", :type => "checkbox", :value => "Tomorrow"}/
+                  Tomorrow
+                  %br/
+                  %input{:name => "vehicle", :type => "checkbox", :value => "This Weekend"}/
+                  This Weekend
+                  %br/
+                  %input{:name => "vehicle", :type => "checkbox", :value => "Weekend"}/
+                  Weekend
+                  %br/
+                  %input{:name => "vehicle", :type => "checkbox", :value => "Next Week"}/
+                  Next Week
+                  %br/
+                  %input{:name => "vehicle", :type => "checkbox", :value => "Next 30  Days"}/
+                  Next 30  Days
+
+            .select-day
+              SELECT DAY OR RANGE
+              .range
+                %input{type: "text", placeholder: "Search Date"}
+                %input{type: "text", placeholder: "End Date"}
+                %button FIND
+              .calendar
+                #calendar
+              .reset-apply
+                %button.reset RESET
+                %button.apply APPLY
+          / %li{:value => "Today"} Today
+          / %li{:value => "Tomorrow"} Tomorrow
+          / %li.selected{:value => "This Week"} This Week
+          / %li{:value => "This Month"} This Month
+          / %li{:value => "Next Three Months"} Next Three Months
       .type.search
         .selected-link
           %span.header-text For only these type:
           %span.currently-selected All Types
           .arrow-up
-        .menu
+        .menu.this-type
           .caret
             %i.fa.fa-caret-up
           %li.selected{:value => "All"} All Types
@@ -155,38 +223,38 @@
     .section-name.event
       .title-place
         .section-title
-          %img.section-title-image{:src => asset_path("title-bg.png")}
+          %img.section-title-image{:src => asset_path("section-bg.png")}
           .title-event EVENTS   
     .load-more LOAD MORE
   .section.blogs.main{:name => "blogs"}
     .section-name.blog
       .title-place
-        .section-title
-          %img.section-title-image{:src => asset_path("title-bg.png")}
-          .title-event BLOGS
+        .section-title{style: "margin-left: 115px"}
+          %img.section-title-image{:src => asset_path("section-bg.png")}
+          .title-event BLOGS AND VLOGS
     .load-more LOAD MORE
   .section.pictures.main{:name => "pictures"}
     .section-name.event
       .title-place
         .section-title
-          %img.section-title-image{:src => asset_path("title-bg.png")}
+          %img.section-title-image{:src => asset_path("section-bg.png")}
           .title-event PICTURES 
     .load-more LOAD MORE
-  .section.videos.main{:name => "videos"}
+  .section.videos.main{:name => "videos", style: "display: none"}
     .section-name.event
       .title-place
         .section-title
-          %img.section-title-image{:src => asset_path("title-bg.png")}
+          %img.section-title-image{:src => asset_path("section-bg.png")}
           .title-event VIDEOS 
     .load-more LOAD MORE
   .section.giveaways.main{:name => "videos"}
     .section-name.event
       .title-place
-        .section-title{style: "margin-left: 115px"}
+        .section-title{style: "margin-left: 130px"}
           %img.section-title-image{:src => asset_path("title-bg.png")}
           .title-event GIVEAWAYS
     .giveaways-box
-      %img.giveaways-image{:src => asset_path("kung_fu_saloon.jpg")}
+      %img.giveaways-image{:src => asset_path("giveaways.jpg")}
       .giveaways-content
         .giveaway-logo
           %img{:src => asset_path("logo.png")}
@@ -228,11 +296,83 @@
       / "https://twitter.com/share?url={{url}}&text={{description}}",popup:{width:685,height:500}}
 
     .desc
+      .desc-date
+        .desc-day FRIDAY
+        .desc-month SEP. 19
+        %button ADD TO CALENDAR
       %span.article-type
       %span.article-title
-      .details More Info
+      .details{style: "display: none"} More Info
       %span.article-description
-      .thumbnails
-        %li
-          %img{:src => asset_path("event1.png")}/
+      / .thumbnails
+      /   %li
+      /     %img{:src => asset_path("event1.png")}/
+      %hr
+      .think-about 
+        Think about going? Well maybe this will convince you...
+        .think-about-sub 
+          Ok, where is this?
+          .where-venue
+            .venue-name
+              Venue Name:
+            .venue
+              Frank Erwin Center
+          .where-address
+            .address-name
+              The Address:
+            .address
+              1701 Red River
+          .where-city
+            .city-name
+              City, State:
+            .city
+              Austin, TX
+        %hr
+        .think-about-sub 
+          Who should I contact for more questions?
+          .contact-info
+            .buy-ticket
+              Buy Tickets:
+            %u.ticket-link Click Here
+        %hr
+        .think-about-sub 
+          Tell me the basics
+          .basic-time
+            .buy-ticket
+              Time of Party:
+            .the-time
+              8:00PM - 11:00PM
+          .basic-type
+            .buy-ticket
+              Type of Party:
+            .the-party
+              Comedy
+          .basic-cover
+            .buy-ticket
+              Cover:
+            .the-cover
+              50
+        %hr
+        .think-about-sub 
+          What should I expect?
+          .expect-dancing
+            .dance
+              Dancing:
+            .the-dance
+              Limited
+          .expect-parking
+            .parking
+              Parking:
+            .parking-type
+              Public/Type
+        / .content-box.event-add-post
+        /   .event-logo
+        /     %img.event-image{:src => asset_path("white_event_logo.png")}
+        /   .event-post
+        /     .event-text POST YOUR EVENT FOR FREE
+        /   .event-learn-more
+        /     .post-learn-more LEARN HOW
+
+
+
 

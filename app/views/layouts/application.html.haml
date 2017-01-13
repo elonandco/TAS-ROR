@@ -5,6 +5,9 @@
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0", :name => "viewport"}/
     %link{:href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Lato|Raleway:300,400,500,600,800|Fjalla+One|Source+Sans+Pro|Montserrat:400,700", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css", :rel => "stylesheet"}/
+
+
     %title TAS
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true
@@ -12,3 +15,4 @@
   %body
     = yield
     = render 'partials/footer'     
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"}

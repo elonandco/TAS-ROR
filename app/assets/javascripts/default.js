@@ -73,6 +73,7 @@ var TAS = TAS || {
     },
 	// manage content
 	addPlaceHolders: function(sections,o) {
+
 		//go through each section
 	    for (var x = 0; x < sections.length; x++) {
 			var template,
@@ -82,15 +83,26 @@ var TAS = TAS || {
 			numofArticles = sections[x].content.children('article').length,
 			//max count 
 			maxCount = (limit > numofArticles) ? numofArticles : limit;
+			console.log(numofArticles);
 			//fetch defined number of place holders only
 	        for (var y = sections[x].loaded; y < maxCount; y++) {
-				if(y !== sections[x].adIndex) {
+	        	console.log(sections[x].name);
+	        	if(y == 0 && sections[x].name == "events") {
+	        		template = $(".templates .event-add-post");
+					sections[x].adIndex += sections[x].adIndex;
+	        	}else if(y == 0 && sections[x].name == "pictures") {
+	        		template = $(".templates .picture-add-post");
+					sections[x].adIndex += sections[x].adIndex;
+	        	}else if(y == 0 && sections[x].name == "blogs") {
+	        		template = $(".templates .blog-add-post");
+					sections[x].adIndex += sections[x].adIndex;
+	        	}else if(y !== sections[x].adIndex) {
 					template = $(".templates ." + sections[x].name + "-template")
 				}else{
 					template = $(".templates .ads-template");
 					sections[x].adIndex += sections[x].adIndex;
 				}
-				
+				// console.log(sections[x].adIndex);
 				//Append template to homepage
 				template.clone().insertBefore(".articles ." + sections[x].name+" .load-more");	
 					//Append template to full description
@@ -289,17 +301,45 @@ var TAS = TAS || {
 
 		if (pos == 1) {
 			ChangeStyleNext(pos);
+			ShowArrow(pos);
 		}else if (pos == 2) {
 			ChangeStyleNext(pos);
+			ShowArrow(pos);
 		}else if (pos == 3) {
 			ChangeStyleNext(pos);
+			ShowArrow(pos);
 		}else if (pos == 4) {
 			ChangeStyleNext(pos);
+			ShowArrow(pos);
 		}	
 
 		function ChangeStyleNext(pos) {
 			$(".slider-date").removeClass("active-slider-date");
 		    $(".slider-date"+ pos).addClass("active-slider-date");		
+		}
+
+		function ShowArrow(pos) {
+			if (pos == 1) {
+				$('.slider1-arrow-up').show();
+				$('.slider2-arrow-up').hide();
+				$('.slider3-arrow-up').hide();
+				$('.slider4-arrow-up').hide();
+			}else if (pos == 2) {
+				$('.slider1-arrow-up').hide();
+				$('.slider2-arrow-up').show();
+				$('.slider3-arrow-up').hide();
+				$('.slider4-arrow-up').hide();
+			}else if (pos == 3) {
+				$('.slider1-arrow-up').hide();
+				$('.slider2-arrow-up').hide();
+				$('.slider3-arrow-up').show();
+				$('.slider4-arrow-up').hide();
+			}else if (pos == 4) {
+				$('.slider1-arrow-up').hide();
+				$('.slider2-arrow-up').hide();
+				$('.slider3-arrow-up').hide();
+				$('.slider4-arrow-up').show();
+			}
 		}
 	},
 	
@@ -372,6 +412,9 @@ var TAS = TAS || {
 		// $('head').append( '<meta name="description" content="this is new">' );
 		console.log("something")
 		//mark as selected
+		$('.event-add-post').hide();
+		$('.picture-add-post').hide();
+		$('.blog-add-post').hide();
 		$(this).addClass('selected')
 		//define elements
 		var el = window.TAS.elem,
@@ -406,6 +449,9 @@ var TAS = TAS || {
 	},
 	//manage article
 	closeArticle: function(event){
+		$('.event-add-post').show();
+		$('.picture-add-post').show();
+		$('.blog-add-post').show();
 		//access element
 		var el = window.TAS.elem;
 		//hide static page
@@ -526,13 +572,17 @@ $(document).ready(function(){
 		$(".dot:nth-of-type("+ pos  +")" ).trigger( "click" );
 
 		if (pos == 1) {
-			ChangeStylePrev(pos)
+			ChangeStylePrev(pos);
+			ShowArrow(pos);
 		}else if (pos == 2) {
-			ChangeStylePrev(pos)
+			ChangeStylePrev(pos);
+			ShowArrow(pos);
 		}else if (pos == 3) {
-			ChangeStylePrev(pos)
+			ChangeStylePrev(pos);
+			ShowArrow(pos);
 		}else if (pos == 4) {
-			ChangeStylePrev(pos)
+			ChangeStylePrev(pos);
+			ShowArrow(pos);
 		}
 	});
 
@@ -545,16 +595,44 @@ $(document).ready(function(){
 
 		if (pos == 1) {
 			ChangeStyleNext(pos);
+			ShowArrow(pos);
 		}else if (pos == 2) {
 			ChangeStyleNext(pos);
+			ShowArrow(pos);
 		}else if (pos == 3) {
 			ChangeStyleNext(pos);
+			ShowArrow(pos);
 		}else if (pos == 4) {
 			ChangeStyleNext(pos);
+			ShowArrow(pos);
 		}
 		
 		console.log(pos-1);
 	});
+
+	function ShowArrow(pos) {
+		if (pos == 1) {
+			$('.slider1-arrow-up').show();
+			$('.slider2-arrow-up').hide();
+			$('.slider3-arrow-up').hide();
+			$('.slider4-arrow-up').hide();
+		}else if (pos == 2) {
+			$('.slider1-arrow-up').hide();
+			$('.slider2-arrow-up').show();
+			$('.slider3-arrow-up').hide();
+			$('.slider4-arrow-up').hide();
+		}else if (pos == 3) {
+			$('.slider1-arrow-up').hide();
+			$('.slider2-arrow-up').hide();
+			$('.slider3-arrow-up').show();
+			$('.slider4-arrow-up').hide();
+		}else if (pos == 4) {
+			$('.slider1-arrow-up').hide();
+			$('.slider2-arrow-up').hide();
+			$('.slider3-arrow-up').hide();
+			$('.slider4-arrow-up').show();
+		}
+	}
 
 	function ChangeStyleNext(pos) {
 		$(".slider-date").removeClass("active-slider-date");
@@ -624,7 +702,15 @@ $(document).ready(function(){
 		// },1000)
         				
 		return false;
+
     });
+
+    $('#calendar').datepicker({
+	        inline: true,
+	        firstDay: 1,
+	        showOtherMonths: true,
+	        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+	    });
 });
 function fbShare(url, title, descr, image, winWidth, winHeight) {
 
