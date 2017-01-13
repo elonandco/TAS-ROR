@@ -14,42 +14,48 @@
 
 @font-face {
     font-family: 'FtraBk';
-    src: url('../fonts/FtraBk__.ttf');
+    // src: url('../fonts/FtraBk__.ttf');
+    src: font-url('<%= asset_path('FtraBk.ttf') %>');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Futura';
-    src: url('../fonts/Futura.ttc');
+    // src: url('../fonts/Futura.ttc');
+    src: font-url('<%= asset_path('Futura.ttf') %>');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'FuturaLT-Bold';
-    src: url('../fonts/FuturaLT-Bold.ttf');
+    // src: url('../fonts/FuturaLT-Bold.ttf');
+    src: font-url('<%= asset_path('FuturaLT-Bold.ttf') %>');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'FuturaLT-BoldOblique';
-    src: url('../fonts/FuturaLT-BoldOblique.ttf');
+    // src: url('../fonts/FuturaLT-BoldOblique.ttf');
+    src: font-url('<%= asset_path('FuturaLT-BoldOblique.ttf') %>');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'FuturaLT-Book';
-    src: url('../fonts/FuturaLT-Book.ttf');
+    // src: url('../fonts/FuturaLT-Book.ttf');
+    src: font-url('<%= asset_path('FuturaLT-Book.ttf') %>');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'FuturaLT-BookOblique';
-    src: url('../fonts/FuturaLT-BookOblique.ttf');
+    // src: url('../fonts/FuturaLT-BookOblique.ttf');
+    src: font-url('<%= asset_path('FuturaLT-BookOblique.ttf') %>');
     font-weight: normal;
     font-style: normal;
 }
@@ -71,13 +77,15 @@
 }
 @font-face {
     font-family: 'FuturaLT-CondensedBoldOblique';
-    src: url('../fonts/FuturaLT-CondensedBoldOblique.ttf');
+    // src: url('../fonts/FuturaLT-CondensedBoldOblique.ttf');
+    src: font-url('<%= asset_path('FuturaLT-CondensedBoldOblique.ttf') %>');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'FuturaLT-CondensedExtraBold';
-    src: url('../fonts/FuturaLT-CondensedExtraBold.ttf');
+    // src: url('../fonts/FuturaLT-CondensedExtraBold.ttf');
+    src: font-url('<%= asset_path('FuturaLT-CondensedExtraBold.ttf') %>');
     font-weight: normal;
     font-style: normal;
 }
@@ -90,7 +98,8 @@
 }
 @font-face {
     font-family: 'FuturaLT-CondensedLightObl';
-    src: url('../fonts/FuturaLT-CondensedLightObl.ttf');
+    // src: url('../fonts/FuturaLT-CondensedLightObl.ttf');
+    src: font-url('<%= asset_path('FuturaLT-CondensedLightObl.ttf') %>');
     font-weight: normal;
     font-style: normal;
 }
@@ -120,7 +129,8 @@
 }
 @font-face {
     font-family: 'FuturaLT-Heavy';
-    src: url('../fonts/FuturaLT-Heavy.ttf');
+    // src: url('../fonts/FuturaLT-Heavy.ttf');
+    src: font-url('<%= asset_path('FuturaLT-Heavy.ttf') %>');
     font-weight: normal;
     font-style: normal;
 }
@@ -134,7 +144,6 @@
     font-family: 'FuturaLT-Light';
     // src: url('../fonts/FuturaLT-Light.ttf');
     src: font-url('<%= asset_path('FuturaLT-Light.ttf') %>');
-    src: font-url('<%= asset_path('FuturaLT-Light.ttf') %>') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -403,6 +412,7 @@ a.search-btn {
 	bottom: 0px;
 	right: 0px;
 }
+
 .load-more {
 	// font-family: Raleway, Arial, sans-serif;
 	// color: #aaaaaa;
@@ -486,16 +496,21 @@ a.search-btn {
 	position: absolute;
 	right: 15px;
 	top: 43px;
+	display: none;
 }
 .caret {
-  position: inherit;
+  position: relative;
+  left: -13%;
   font-size: 21px;
   line-height: 0;
   display: block;
   text-align: center;
   margin-top: -14px;
   height: 14px;
-  color: black;
+  color: #fff;
+  .fa {
+  	text-shadow: 0px -3px 0px #ccc;
+  }
 }
 .thumbnails {
 	display: none;
@@ -538,7 +553,8 @@ a.search-btn {
 	font-size: 14px;
 	text-align: left;
 	text-transform: none;
-	padding: 0 0 9px 0;
+    padding: 0 0 9px 0;
+    color: #000;
 }
 
 .menu li.selected,.menu li:hover {
@@ -660,7 +676,7 @@ a.search-btn {
     display: flex;
     top: 625px;
     background: #FFF;
-    z-index: 3;
+    z-index: 2;
     color: #acacac;
     font-size: 18px;
     overflow: hidden;
@@ -684,6 +700,60 @@ a.search-btn {
 	width: 25%;
 	padding-top: 15px;
     padding-bottom: 15px;
+}
+.slider1-arrow-up {
+	position: relative;
+  	left: -37%;
+    top: 64%;
+  	font-size: 21px;
+  	line-height: 0;
+  	display: block;
+  	text-align: center;
+  	margin-top: -14px;
+  	height: 14px;
+  	color: #00b288;
+  	display: none;
+}
+.slider2-arrow-up {
+	position: relative;
+  	left: -13%;
+    top: 64%;
+  	font-size: 21px;
+  	line-height: 0;
+  	display: block;
+  	text-align: center;
+  	margin-top: -14px;
+  	height: 14px;
+  	color: #00b288;
+  	display: none;
+}
+.slider3-arrow-up {
+	position: absolute;
+    /* left: 27%; */
+    right: 37%;
+    top: 100%;
+  	font-size: 21px;
+  	line-height: 0;
+  	display: block;
+  	text-align: center;
+  	margin-top: -14px;
+  	height: 14px;
+  	color: #00b288;
+  	display: none;
+}
+.slider4-arrow-up {
+	position: absolute;
+    /* left: 27%; */
+    right: 12%;
+    top: 100%;
+  	font-size: 21px;
+  	line-height: 0;
+  	display: block;
+  	text-align: center;
+  	margin-top: -14px;
+  	height: 14px;
+  	color: #00b288;
+  	display: none;
 }
 .bookmark-open .articles .content-box.selected {
 	-webkit-transition: opacity 0.4s ease-in-out;
@@ -776,6 +846,9 @@ a.search-btn {
 	overflow: hidden;
 	cursor: pointer;
 	border: solid 8px #fff;
+	-webkit-box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
+	-moz-box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
+	box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
 }
 .content-box .description {
 	display: none;	
@@ -810,22 +883,28 @@ a.search-btn {
 }
 .article-type {
 	display: block;
-	font-style: italic;
-	margin: 0;
+	// font-style: italic;
+	// margin: 0;
 	font-family: 'Source Sans Pro', sans-serif;
-	color: #646464;
+	// color: #646464;
+	font-size: 24px;
+	margin: 10px 0;
+	// font-family: 'Montserrat', sans-serif;
 }
 .article-title {
 	font-weight: bold;
 	line-height: 30px;
 	font-family: 'Montserrat', sans-serif;
-	font-size: 18px;
-	color: #999;
-	text-transform: uppercase;
-	letter-spacing: 2px;
+	// font-size: 18px;
+	// color: #999;
+	// text-transform: uppercase;
+	// letter-spacing: 2px;
 	width: 100%;
 	text-align: left;
 	display: block;
+	font-size: 25px;
+    color: #333;
+    margin-bottom: 15px;
 }
 .content-box img {
 	width: 100%;
@@ -1149,7 +1228,7 @@ a.search-btn {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: normal;
 	color: #646464;
-	line-height: 30px;
+	line-height: 23px;
 }
 
 /* Bookmarked Articles */
@@ -1477,23 +1556,81 @@ to {
 }
 
 .caption-icons {
-	position: absolute;
+	position: fixed;
     right: 4%;
     bottom: 44%;
 	a {
 		display: block;
 	}
 	.circle {
+		display: block;
+		text-align: center;
 		margin: 10px 10px;
 		border-radius: 50%;
 		width: 20px;
     	height: 20px;
     	padding: 23px;
 		background-color: #fff;
+		-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+	    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+	    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+	    // .event-circle {
+	    // 	display: inline-block;
+	    // }
+	    cursor: pointer;
+
+	    img {
+	    	position: relative;
+	    	opacity: 1;
+	    	top: 0;
+	    }
+	    img:first-child {
+		    top: 0px;
+		}
 	}
-	.green {
-		background-color: #00b288 !important;
-	}
+	// .green {
+	// 	background-color: #00b288 !important;		
+	// }
+	.event-green {
+    	background: url("<%= asset_path("event.png") %>") no-repeat 19px #00b288;
+		background-size: 27px;
+    	background-repeat: no-repeat;
+    }
+    .event-white {
+    	background: url("<%= asset_path("event-bubble.png") %>") no-repeat -9px #fff;
+		background-size: 84px;
+    	background-repeat: no-repeat;
+    }
+    .pic-green {
+    	background: url("<%= asset_path("photos.png") %>") no-repeat 19px #00b288;
+		background-size: 27px;
+    	background-repeat: no-repeat;
+    }
+    .pic-white {
+    	background: url("<%= asset_path("photo-bubble.png") %>") no-repeat -9px #fff;
+		background-size: 84px;
+    	background-repeat: no-repeat;
+    }
+    .video-green {
+    	background: url("<%= asset_path("videos.png") %>") no-repeat 19px #00b288;
+		background-size: 27px;
+    	background-repeat: no-repeat;
+    }
+    .video-white {
+    	background: url("<%= asset_path("video-bubble.png") %>") no-repeat -9px #fff;
+		background-size: 84px;
+    	background-repeat: no-repeat;
+    }
+    .blog-green {
+    	background: url("<%= asset_path("videos.png") %>") no-repeat 19px #00b288;
+		background-size: 27px;
+    	background-repeat: no-repeat;
+    }
+    .blog-white {
+    	background: url("<%= asset_path("blogs-bubble.png") %>") no-repeat -9px #fff;
+		background-size: 84px;
+    	background-repeat: no-repeat;
+    }
 }
 
 .footer-section {
@@ -1583,6 +1720,9 @@ to {
     border: solid 8px #fff;
     display: block;
     text-align: center;
+    -webkit-box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
+	-moz-box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
+	box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
     .giveaways-image {
     	width: 100%;
     	height: 254px;
@@ -1625,7 +1765,7 @@ to {
 	text-align: center;
 	.section-title {
 		text-align: center;
-	    font-size: 35px;
+	    font-size: 30px;
 	    font-family: "FuturaLT-CondensedBold";
 	    color: #fff;
 	    font-weight: bold;
@@ -1637,7 +1777,7 @@ to {
     	// left: 24%;
     	display: inline-block;
     	text-align: left; 
-	    margin-left: 67px;   	
+	    // margin-left: 67px;   	
 	}
 	.title-event {
 	    position: relative;
@@ -1650,22 +1790,272 @@ to {
 	}
 }
 
-// .section-title.fixed {
-// 	position: fixed;
-// 	top: 70px;
+.desc-date {
+	font-size: 25px;
+	.desc-day {
+		display: inline-block;
+	}
+	.desc-month {
+		display: inline-block;
+		color: #505050;
+	}
+}
+
+.desc {
+	hr {
+		height: 1px;
+	    background-color: #959595;
+	    border: none;
+	    opacity: 0.4;
+	    margin-bottom: 30px;
+    	margin-top: 25px;
+	}
+	button {
+	 	font-family: "FuturaLT-CondensedBold";
+	 	background: #00b288;
+	    padding: 12px 34px;
+	    color: #fff;
+	    font-weight: 600;
+		-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+	    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+	    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+	    border: none;
+	    float: right;
+	    position: relative;
+	    top: -10px;
+	    font-size: 15px;
+	    cursor: pointer;
+	}
+}
+
+.think-about {
+    font-family: 'Montserrat', sans-serif;
+    width: 448px;
+    text-align: left;
+    font-size: 18px;
+    color: #000;
+    line-height: 20px;
+    letter-spacing: -0.6px;
+
+    .think-about-sub  {
+    	color: #00b288;
+    	font-size: 16px;
+    	font-weight: 400;
+    	margin-top: 20px;
+
+    	.where-venue, .where-address,
+    	.where-city, .contact-info, .basic-time,
+    	.basic-type, .basic-cover,
+    	.expect-dancing, .expect-parking {
+    		margin-left: 17px;
+    		margin-top: 20px;
+    		font-weight: 400;
+    		font-size: 16px;
+    	}
+
+    	.venue-name, .address-name,
+    	.city-name, .buy-ticket,
+    	.time-party, .type-party,
+    	.cover, .dance, .parking {
+    		display: inline-block;
+    		color: #000;
+    		font-size: 16px;
+    	}
+
+    	.venue, .address,
+    	.city, .ticket-link,
+    	.the-time, .the-party,
+    	.the-cover, .the-dance,
+    	.parking-type {
+    		display: inline-block;
+    		font-weight: normal;
+    		color: #000;
+    		font-family: 'Source Sans Pro', sans-serif;
+    		font-size: 16px;
+    	}
+
+    	u {
+    		color: #00b288 !important;
+    		cursor: pointer;
+    	}
+    }
+}
+
+.this-week {
+	width: 800px;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    background-color: #fff;
+    margin-left: -197px;    
+    text-transform: none;
+
+    .menu-section {
+    	color: #333;
+    	.pick-time {
+    		vertical-align: text-top;
+    		display: inline-block;
+    		width: 15%;
+    		padding: 30px;
+    		background-color: #f2f2f2;
+    		font-family: 'FuturaLT-Bold';
+    		font-size: 14px;
+		    padding-bottom: 229px;
+
+    		form {
+    			margin-top: 15px;
+    			font-family: 'Source Sans Pro', sans-serif;
+    			font-size: 12px;
+    		}
+
+    		input[type="checkbox"] {
+    			margin-bottom: 15px;
+    		}
+    	}
+    	.select-day {
+    		vertical-align: text-top;
+    		display: inline-block;
+    		text-align: center;
+    		width: 65%;
+    		padding: 30px;
+    		font-family: 'FuturaLT-Bold';
+    		font-size: 14px;
+
+    		.range {
+    			margin-top: 15px;
+    			input {
+    				display: inline-block;
+    				padding: 9px;
+    				-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+				    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+				    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.63);
+				    border: none;
+				    margin: 5px;
+    			}
+
+    			button {
+    				display: inline-block;
+    				background-color: #000;
+    				color: #fff;
+    				border: none;
+    				font-family: "FuturaLT-CondensedBold";
+			        padding: 8px 30px;
+					-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+				    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+				    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+				    margin: 5px;
+    			}
+    		}
+
+    		.reset-apply {
+    			margin-top: 20px;
+    			button {
+    				display: inline-block;
+    				border: none;
+    				font-family: "FuturaLT-CondensedBold";
+			        padding: 9px 70px;
+					-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+				    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+				    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+				    margin: 5px;
+    			}
+
+    			.reset {
+    				color: #00b288;
+    				background-color: #fff;
+    			}
+
+    			.apply {
+    				background-color: #00b288;
+    				color: #fff;
+    			}
+    		}
+    	}
+    }
+}
+
+.this-event {
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    background-color: #fff;
+    color: #45ad58;
+    height: 190px;
+
+    li {
+	    padding: 5px 0 15px 0;
+	}
+}
+
+.this-type {
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    background-color: #fff;
+    color: #45ad58;
+}
+
+.content-box.event-add-post, .content-box.picture-add-post, .blog-add-post {
+	font-family: Raleway, Arial, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: #00b288;
+	-webkit-box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
+	-moz-box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
+	box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
+
+    .event-logo {
+    	display: block;
+    	text-align: center;
+	    margin-top: 50px;
+    	.event-image {
+    		display: inline-block;
+    		width: 50px;
+    		position: relative;
+    	}
+    }
+
+    .event-post {
+    	display: block;
+    	text-align: center;
+    	margin-top: 15px;
+    	.event-text {
+    		display: inline-block;
+    		font-family: 'FuturaLT-Heavy';
+    		font-size: 17px;
+		    width: 159px;
+    	}
+    	.blog-text {
+    		width: 165px;
+    	}
+    }
+
+    .event-learn-more {
+    	display: block;
+    	text-align: center;
+    	margin-top: 17px;
+    	.post-learn-more {
+    		display: inline-block;
+    		font-family: "FuturaLT-CondensedBold";
+    		border: 1px solid #fff;
+    		font-size: 15px;
+    		padding: 9px 55px;
+    	}
+    }
+}
+// .content-box.add-post a {
+// 	color: #303030;
+// 	text-decoration: none;
+// 	top: 0px;
+// 	display: block;
+// 	text-align: center;
+// 	position: absolute;
 // 	width: 100%;
-// 	height: auto;
-// 	margin: 0;
-// 	padding: 10px 0;
-// 	background: rgba(255,255,255,1);
 // 	left: 0px;
-// 	z-index: 1;
-// 	border: none;
-// 	font-size: 35px;
-// 	-webkit-transition: all 0.5s;
-
+// 	bottom: 0px;
+// 	right: 0px;
 // }
-
 .learn-more, .currently-selected,
 .search-btn, .active-slider-date,
 .load-more {
@@ -1674,3 +2064,25 @@ to {
 .slider-footer, .month {
 	font-family: "FuturaLT-CondensedLight";
 }
+.desc-day {
+	font-family: "FuturaLT-Bold";
+}
+.desc-month {
+	font-family: "FuturaLT-Light";
+}
+
+.bookmarks.event-add-post {
+	display: none;
+}
+
+//##################### CALENDAR ###############################//
+.calendar {
+	display: block;
+	text-align: center;
+	margin-top: 20px;
+	#calendar {
+		display: inline-block;
+	}
+}
+
+//##############################################################//

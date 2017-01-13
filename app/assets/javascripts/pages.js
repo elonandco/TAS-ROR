@@ -1,10 +1,10 @@
 $(document).ready(function(){
   /* Dropdown menu */
   var searchFields = [], i=0;
-  $("div.search-fields").children("div.search").each(function(){
-    searchFields[i] = ($(this).find(".menu").height()+17);
-    i++;
-  });
+  // $("div.search-fields").children("div.search").each(function(){
+  //   searchFields[i] = ($(this).find(".menu").height()+17);
+  //   i++;
+  // });
   $(".selected-link").mouseover(function(){
     $(this).height(65);
   }).mouseout(function(){
@@ -22,7 +22,7 @@ $(document).ready(function(){
       $(this).parent("div").addClass("clicked");
       search.height(menu.height() + (search.height() + 5) + "px");
       $(this).height(currentH-5);
-      menu.height(menu.height()+5);
+      menu.height(menu.height());
     }
     else {
       $(this).parent("div").removeClass("clicked");
