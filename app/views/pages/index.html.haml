@@ -135,7 +135,8 @@
           %li{:value => "Fashion Show"} Fashion Show
           %li{:value => "Meetup"} Meetup
           %li{:value => "Museum"} Museum
-      .search-box{style: "float:right; margin-right:74px;"}
+      .search-box
+        / {style: "float:right; margin-right:74px;"}
         %form.form-inline
           .input-prepend
             %span.add-on
@@ -146,152 +147,54 @@
   /   %i.fa.fa-long-arrow-left.slides-previous{ style: "color: red; font-size: 5em"}
   /   %i.fa.fa-long-arrow-right.slides-next{ style: "color: red; font-size: 5em"}
   .section-header
-    .section-name{:name => "events"} Events
-    .section-name{:name => "blogs"} Blogs
-    .section-name{:name => "pictures"} Pictures
-    .section-name{:name => "videos"} Videos
-  .section.events.main{:name => "events"}
-    .section-name.event Events
-    .load-more Load More Events
+    / .section-name{:name => "events"} Events
+    / .section-name{:name => "blogs"} Blogs
+    / .section-name{:name => "pictures"} Pictures
+    / .section-name{:name => "videos"} Videos
+  .section.events.main.top-section{:name => "events"}
+    .section-name.event
+      .title-place
+        .section-title
+          %img.section-title-image{:src => asset_path("title-bg.png")}
+          .title-event EVENTS   
+    .load-more LOAD MORE
   .section.blogs.main{:name => "blogs"}
-    .section-name.blog Blogs
-    .load-more Load More Blogs
+    .section-name.blog
+      .title-place
+        .section-title
+          %img.section-title-image{:src => asset_path("title-bg.png")}
+          .title-event BLOGS
+    .load-more LOAD MORE
   .section.pictures.main{:name => "pictures"}
-    .section-name.picture Pictures
-    .load-more Load More Pictures
+    .section-name.event
+      .title-place
+        .section-title
+          %img.section-title-image{:src => asset_path("title-bg.png")}
+          .title-event PICTURES 
+    .load-more LOAD MORE
   .section.videos.main{:name => "videos"}
-    .section-name.video Videos
-    .load-more Load More Videos
+    .section-name.event
+      .title-place
+        .section-title
+          %img.section-title-image{:src => asset_path("title-bg.png")}
+          .title-event VIDEOS 
+    .load-more LOAD MORE
+  .section.giveaways.main{:name => "videos"}
+    .section-name.event
+      .title-place
+        .section-title{style: "margin-left: 115px"}
+          %img.section-title-image{:src => asset_path("title-bg.png")}
+          .title-event GIVEAWAYS
+    .giveaways-box
+      %img.giveaways-image{:src => asset_path("kung_fu_saloon.jpg")}
+      .giveaways-content
+        .giveaway-logo
+          %img{:src => asset_path("logo.png")}
+        .giveaway-text
+          Learn how you can cast a ballot and enter to win free tickets and swag
+        .giveaway-enter
+          .button ENTER NOW
 
-
-/ .articles
-/   .header
-/     .search-fields
-/       .category.search
-/         .selected-link
-/           %span.header-text I want to see:
-/           %span.currently-selected Events
-/           .arrow-up
-/         .menu
-/           %li.selected Events
-/           %li Blogs
-/           %li Pictures
-/           %li Videos
-/       .date.search
-/         .selected-link
-/           %span.header-text I want to go:
-/           %span.currently-selected This Week
-/           .arrow-up
-/         .menu
-/           %li{:value => "Today"} Today
-/           %li.selected{:value => "This Week"} This Week
-/           %li{:value => "Next Week"} Next Week
-/           %li{:value => "This Month"} This Month
-/       .type.search
-/         .selected-link
-/           %span.header-text For only these type:
-/           %span.currently-selected All Types
-/           .arrow-up
-/         .menu
-/           %li.selected{:value => "All"} All Types
-/   .section-header
-/     .section-name{:name => "events"} Events
-/     .section-name{:name => "blogs"} Blogs
-/     .section-name{:name => "pictures"} Pictures
-/     .section-name{:name => "videos"} Videos
-/   .section.events.main{:name => "events"}
-/     .section-name.event Events
-/     -i = 0
-/     - 6.times do
-/       - i = i + 1
-/       -if i==5
-/         .content-box.ads-template
-/           %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
-/             %span Ad Space
-/       -else
-/         .content-box.events-template
-/           .image
-/             %img{:src => asset_path("event"+i.to_s+".png")}/
-/           .content
-/             .overlay
-/               .sponsored Sponsored
-/               .date
-/                 %span.dayofweek Friday
-/                 %span.month Sep. 19
-/               .setting
-/                 %span.type Networking
-/                 %span.title Young Professionals' Happy Hour
-/                 %p.description
-/     .load-more Load More Events
-/   .section.blogs.main{:name => "blogs"}
-/     .section-name.blog Blogs
-/     -i = 0
-/     - 6.times do
-/       - i = i + 1
-/       -if i==4
-/         .content-box.ads-template
-/           %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
-/             %span Ad Space
-/       -else
-/         .content-box.blogs-template
-/           .image
-/             %img{:src => asset_path("blogs"+i.to_s+".png")}/
-/           .content
-/             .overlay
-/               .sponsored Sponsored
-/               .setting
-/                 %span.type Showcase
-/                 %span.title The Brain Behind Austin's Black Film Festival
-/                 %p.description
-/     .load-more Load More Blogs
-/   .section.pictures.main{:name => "pictures"}
-/     .section-name.picture Pictures
-/     -i = 0
-/     - 6.times do
-/       - i = i + 1
-/       -if i==2
-/         .content-box.ads-template
-/           %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
-/             %span Ad Space
-/       -else
-/         .content-box.pictures-template
-/           .image
-/             %img{:src => asset_path("pictures"+i.to_s+".png")}/
-/           .content
-/             .overlay
-/               .sponsored Sponsored
-/               .date
-/                 %span.dayofweek Friday
-/                 %span.month Sep. 19
-/               .setting
-/                 %span.type Networking
-/                 %span.title Young Professionals' Happy Hour
-/                 %p.description
-/     .load-more Load More Pictures
-/   .section.videos.main{:name => "videos"}
-/     .section-name.video Videos
-/     -i = 0
-/     - 6.times do
-/       - i = i + 1
-/       -if i==6
-/         .content-box.ads-template
-/           %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
-/             %span Ad Space
-/       -else
-/         .content-box.videos-template
-/           .image
-/             %img{:src => asset_path("videos"+i.to_s+".png")}/
-/           .content
-/             .overlay
-/               .sponsored Sponsored
-/               .date
-/                 %span.dayofweek Friday
-/                 %span.month Sep. 19
-/               .setting
-/                 %span.type Networking
-/                 %span.title Young Professionals' Happy Hour
-/                 %p.description    
-/     .load-more Load More Videos
 .bookmarks
   .bookmarked-articles
     .section.events{:name => "events"}
@@ -317,7 +220,8 @@
       %a.twitter-share-btn
         %i.fa.fa-twitter
       %a.twitter-share{:href => "https://twitter.com/intent/tweet?text=dssdsd", :onclick => "window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=300'); return false;", :target => "_blank", style: "display: none"}
-      %i.fa.fa-instagram
+      %a{:href => "https://www.instagram.com/theaustinsocialite", :target => "_blank"}
+        %i.fa.fa-instagram
       / %a.twitter-share{:href => "https://twitter.com/share?text='dssdsd'", popup: "width=685,height=500", :target => "_blank", style: "display: none"} 
       / .twitter-share{"data-description" => "sdsdadad", "data-type" => "twitter", "data-url" => "lvh.me:3000?type=events12", style: "display: none"}
 
