@@ -1,1 +1,27 @@
 .footer
+  .footer-section
+    .navigate 
+      .h4 NAVIGATE
+      .navigate-links
+        %a About Us
+        %a Join the Team
+        %a Hire Us
+        %a Contact Us
+    .reach-us 
+      .h4 ALSO REACH US AT
+      .reach-us-social
+        %a{:href => "https://www.facebook.com/theaustin.socialite/", :target => "_blank"}
+          %i.fa.fa-facebook
+        %a{:href => "https://twitter.com/tasocialite", :target => "_blank"}
+          %i.fa.fa-twitter
+        %a{:href => "https://www.instagram.com/theaustinsocialite", :target => "_blank"}
+          %i.fa.fa-instagram
+    .stay-in-touch
+      .h4 STAY IN TOUCH
+      .stay-in-touch-content
+        .text Subscribe to our newsletter to stay up to date
+        .newsletter
+          %input{type: "text", placeholder: "Enter your email"}
+          %button SUBMIT
+    .footer-logo
+      %img.footer-image{:src => asset_path("white_logo.png")}/
