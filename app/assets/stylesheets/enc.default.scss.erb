@@ -583,7 +583,7 @@ a.search-btn {
   cursor: pointer;
 // <<<<<<< HEAD
   margin: 0 0 0 300px;
-  overflow: hidden;
+  // overflow: hidden;
   position: relative;
 // =======
 //  // margin: 0 0 0 232px;
@@ -2129,10 +2129,17 @@ to {
 .mask .type, .mask .month, .mask .sponsored, .mask .place{
   color: #646464;
 }
-.mask .title, .mask .type {
+.mask .title, .mask .type, .mask .place {
   color: #000;
   padding: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif; 
+}
+.mask .type {
+  font-weight: normal;
+}
+.mask .title {
+  font-size: 14px;
+  font-weight: 600;
 }
 .mask .dayofweek {
   color: #000;
