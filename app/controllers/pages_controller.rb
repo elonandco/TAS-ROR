@@ -17,7 +17,7 @@ class PagesController < ApplicationController
 
   	if blogs.present?
   		blogs.each do |blog|
-        @blogs << { id: blog.id, type: blog.blog_type, title: blog.title, share: blog.share, description: blog.description, image: blog.image, sponsored: blog.sponsored, ad: blog.ad }
+        @blogs << { id: blog.id, type: blog.blog_type, title: blog.title, mask_type: blog.blog_type, mask_title: blog.title, share: blog.share, description: blog.description, image: blog.image, sponsored: blog.sponsored, ad: blog.ad }
       end
   	end
 
@@ -41,7 +41,7 @@ class PagesController < ApplicationController
           time = event.start_time.strftime("%I%P") + " - " + event.start_time.strftime("%I%P")
         end
         
-        @events << { id: event.id, dayofweek: dayofweek, month: month, title: event.title, type: event.event_type, time: time, place: event.place, image: event.image, sponsored: event.sponsored, ad: event.ad, description: event.description }
+        @events << { id: event.id, dayofweek: dayofweek, month: month, title: event.title, type: event.event_type, mask_title: event.title, mask_type: event.event_type, time: time, place: event.place, image: event.image, sponsored: event.sponsored, ad: event.ad, description: event.description }
       end
     end
 
@@ -63,7 +63,7 @@ class PagesController < ApplicationController
           month = picture.picture_date.strftime("%b. %d")
         end
         
-        @pictures << { id: picture.id, dayofweek: dayofweek, month: month, title: picture.title, type: picture.picture_type, place: picture.place, image: picture.image, sponsored: picture.sponsored, ad: picture.ad, description: picture.description }
+        @pictures << { id: picture.id, dayofweek: dayofweek, month: month, title: picture.title, mask_title: picture.title, type: picture.picture_type, place: picture.place, image: picture.image, sponsored: picture.sponsored, ad: picture.ad, description: picture.description }
       end
     end
 

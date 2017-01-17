@@ -70,7 +70,12 @@
     .event-learn-more
       .post-learn-more LEARN HOW
   .content-box.ads-template
-    %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+    / %a{:href => "http://www.theaustinsocialite.com", :target => "_blank"}
+    /   %span Ad Space
+    %a
+      %span Ad Space
+  .content-box.blogs-ads-template
+    %a
       %span Ad Space
   .content-box.events-template.no-content
     .image
@@ -88,8 +93,8 @@
     .mask
       .orverlay
         .setting
-          %span.type 
-          %span.title 
+          %span.mask-type 
+          %span.mask-title 
         .center.date
           %p
             %span.dayofweek
@@ -111,8 +116,8 @@
     .mask
       .orverlay
         .setting
-          %span.type 
-          %span.title 
+          %span.mask-type 
+          %span.mask-title 
         .button-container
           %button ADD TO CALENDAR
           %button.second MORE DETAILS
@@ -133,7 +138,7 @@
       .orverlay
         .setting
           %span.place 
-          %span.title 
+          %span.mask-title 
         .center.date
           %p
             %span.dayofweek
@@ -206,8 +211,8 @@
             .select-day
               SELECT DAY OR RANGE
               .range
-                %input{type: "text", placeholder: "Search Date"}
-                %input{type: "text", placeholder: "End Date"}
+                %input#search-date{type: "text", placeholder: "Search Date"}
+                %input#end-date{type: "text", placeholder: "End Date"}
                 %button FIND
               .calendar
                 #calendar

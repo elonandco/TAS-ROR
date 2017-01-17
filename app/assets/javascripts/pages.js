@@ -21,12 +21,12 @@ $(document).ready(function(){
       resetSearchFields();
       $(this).parent("div").addClass("clicked");
       search.height(menu.height() + (search.height() + 5) + "px");
-      $(this).height(currentH-5);
+      // $(this).height(currentH-5);
       menu.height(menu.height());
     }
     else {
       $(this).parent("div").removeClass("clicked");
-      menu.height(menu.height()-5);
+      // menu.height(menu.height()-5);
       search.height($(this).height() + "px");
     }
   });

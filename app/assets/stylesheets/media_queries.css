@@ -3,3 +3,27 @@
         bottom: 100px !important;
     }
 }
+
+@media screen and (max-width: 1316px) {
+    .content-box {
+    	width: 26.6% !important;
+    }
+    .bookmark-open .content-box {
+    	width: 100% !important;
+    }
+    .blogs-ads-template {
+	    width: 93.7% !important;
+	}
+}
+
+@media screen and (min-width: 1405px) and (max-width: 1686px) {
+    .search-fields {
+    	margin: 0 0 0 100px !important;
+    }
+}
+
+@media screen and (min-width: 1215px) and (max-width: 1404px) {
+    .search-fields {
+    	margin: 0 0 0 50px !important;
+    }
+}

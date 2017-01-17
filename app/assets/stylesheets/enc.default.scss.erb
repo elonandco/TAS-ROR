@@ -305,7 +305,7 @@ html, body {
 
 .logo {
   // background-image: url("<%= asset_path("TAS_logo.png") %>");
-  // background-image: url("<%= asset_path("white_logo.png") %>");
+  background-image: url("<%= asset_path("white_logo.png") %>");
   height: 85px;
   // width: 271px;
   width: 192px;
@@ -403,7 +403,7 @@ a.search-btn {
   padding: 15px 0 5px 20px;
 }
 
-.content-box.ads-template {
+.content-box.ads-template, .content-box.blogs-ads-template {
   font-family: Raleway, Arial, sans-serif;
   line-height: 254px;
   font-weight: bold;
@@ -411,7 +411,7 @@ a.search-btn {
   color: #454545;
   background: #fff;
 }
-.content-box.ads-template a {
+.content-box.ads-template a, .content-box.blogs-ads-template a {
   color: #303030;
   text-decoration: none;
   top: 0px;
@@ -1105,7 +1105,7 @@ a.search-btn {
   display: block;
   height: 35px;
 }
-.content-box .type,.place {
+.content-box .type,.place, .mask-type {
   text-align: left;
   color: rgba(255,255,255,0.8);
   display: block;
@@ -1981,11 +1981,13 @@ to {
           .reset {
             color: #00b288;
             background-color: #fff;
+            cursor: pointer;
           }
 
           .apply {
             background-color: #00b288;
             color: #fff;
+            cursor: pointer;
           }
         }
       }
@@ -2022,7 +2024,9 @@ to {
   -webkit-box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
   -moz-box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
   box-shadow: 0px 0px 29px -1px rgba(0,0,0,0.44);
-
+  // background-image: url("<%= asset_path("add-bg.jpg") %>");
+  cursor: text;
+  pointer-events: none;
     .event-logo {
       display: block;
       text-align: center;
@@ -2062,6 +2066,9 @@ to {
       }
     }
 }
+.blogs-ads-template {
+  width: 93.7%;
+}
 // .content-box.add-post a {
 //  color: #303030;
 //  text-decoration: none;
@@ -2091,6 +2098,11 @@ to {
 
 .bookmarks.event-add-post {
   display: none;
+}
+
+.ads-template, .blogs-ads-template {
+  cursor: text;
+  pointer-events: none;
 }
 
 //##################### CALENDAR ###############################//
@@ -2123,6 +2135,7 @@ to {
   margin: 20px 20px 0;
   left: 0;
   right: 0;
+  text-align: left;
 }
 .mask .type, .mask .title, .mask .place {
   margin: 0;
@@ -2139,6 +2152,26 @@ to {
   font-weight: normal;
 }
 .mask .title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mask .mask-type, .mask .mask-title, .mask .place {
+  margin: 0;
+  display: block;
+}
+.mask .mask-type, .mask .month, .mask .sponsored, .mask .place{
+  color: #646464;
+}
+.mask .mask-title, .mask .mask-type, .mask .place {
+  color: #000;
+  padding: 0;
+  font-family: 'Raleway', sans-serif; 
+}
+.mask .mask-type {
+  font-weight: normal;
+}
+.mask .mask-title {
   font-size: 14px;
   font-weight: 600;
 }
@@ -2229,7 +2262,9 @@ to {
 }
 .ui-datepicker .ui-datepicker-today a{
   color:#00b288;
+  font-weight: bold;
   // border: 1px solid #d3d3d3;
+  // background-color: green;
 }
 .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
   display: none;
@@ -2251,6 +2286,11 @@ to {
 .select-day .buttons button.prev {
   background: #fff;
   color: #000;
+}
+
+.ui-state-active {
+  background-color: #00b288 !important;
+  color: #fff !important;
 }
 //##############################################################//
 

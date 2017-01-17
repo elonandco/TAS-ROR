@@ -78,12 +78,13 @@ var TAS = TAS || {
 	    for (var x = 0; x < sections.length; x++) {
 			var template,
 			//detemine number of articles to load
-			limit = o.placeholdersToLoad + sections[x].loaded,
+			limit = sections[x].name == "blogs" ? o.placeholdersToLoad + sections[x].loaded - 2 : o.placeholdersToLoad + sections[x].loaded,
+			// limit = o.placeholdersToLoad + sections[x].loaded,
 			//number of articles
 			numofArticles = sections[x].content.children('article').length,
 			//max count 
 			maxCount = (limit > numofArticles) ? numofArticles : limit;
-			console.log(numofArticles + " " + sections[x].name + " " + maxCount);
+			console.log(limit);
 			//fetch defined number of place holders only
 	        for (var y = sections[x].loaded; y < maxCount; y++) {
 	        	// console.log(sections[x].name);
@@ -92,7 +93,7 @@ var TAS = TAS || {
 	        	// 	console.log("something " + sections[x].name)
 	        	// }
 	        	if(y == 0 && sections[x].name == "events") {
-	        		template = $(".templates .event-add-post");
+	        		template = $(".event-add-post");
 					sections[x].adIndex += sections[x].adIndex;
 	        	}else if(y == 0 && sections[x].name == "pictures") {
 	        		template = $(".templates .picture-add-post");
@@ -103,13 +104,21 @@ var TAS = TAS || {
 	        	}else if(y !== sections[x].adIndex) {
 					template = $(".templates ." + sections[x].name + "-template")
 				}else{
+					if (sections[x].name !== "blogs") {
+						template = $(".templates .ads-template");
+						sections[x].adIndex += sections[x].adIndex;
+					}
+
+				}
+				// console.log((y !== sections[x].adIndex) + " y = " + y + " section = " + sections[x].adIndex);
+				//Append template to homepage
+				if (y == 4 && sections[x].loaded == 0 && sections[x].name !== "blogs" ) {
 					template = $(".templates .ads-template");
 					sections[x].adIndex += sections[x].adIndex;
-				}
-				// console.log(sections[x].adIndex);
-				//Append template to homepage
-				if (y == 4 && sections[x].loaded == 0) {
-					template = $(".templates .ads-template");
+					// template.clone().addClass('ad-space').insertBefore(".articles ." + sections[x].name+" .load-more");		
+				}else if (y == 3 && sections[x].loaded == 0 && sections[x].name == "blogs" ) {
+					template = $(".templates .blogs-ads-template");
+					// $(this).addClass("blogs-ads-template");
 					sections[x].adIndex += sections[x].adIndex;
 					// template.clone().addClass('ad-space').insertBefore(".articles ." + sections[x].name+" .load-more");		
 				}
@@ -178,7 +187,8 @@ var TAS = TAS || {
 	
 	// manage content		
 	loadContent: function(e){	
-		//determine scroller 
+		//determine scroller
+		// console.log("load");
 		var event_ids = $("#event_ids").val().split(", ");
 		var blog_ids = $("#blog_ids").val().split(", ");
 		var pic_ids = $("#pic_ids").val().split(", ");
@@ -553,6 +563,18 @@ var TAS = TAS || {
 $(document).ready(function(){
 
 	TAS.init();
+	$(".selected-link").on('click', function () {
+		$(".ui-state-default").removeClass("ui-state-active");
+	});	
+
+	$(".ui-state-default").on('click', function () {
+		if ($("#search-date").val() == "" || $("#end-date").val() == "" ) {
+			$(".ui-state-default").removeClass("ui-state-active");
+			$(this).addClass("ui-state-active");
+			console.log("asdasd");
+		}
+	});
+	
 	var type = $("#type").val();
 	setTimeout(function(){
 		
@@ -657,8 +679,6 @@ $(document).ready(function(){
 		var type = $("#type").val();
 			if (type != "") {
 				$("#events12").trigger( "click" );
-				// document.getElementById('events12').click();
-				// console.log(type);
 			}		
 		},1000)
 	} 
@@ -698,34 +718,54 @@ $(document).ready(function(){
 		var title = $(".section").children(".selected").last().find(".title").html();
 		var descr = $(".section").children(".selected").last().find(".description").html();
 		var hashtag  = "SocialiteApproved, TheAustinSocialite, ATX "; 
-		// \nlink: " + window.location.host + "?type="+type + id
-		// $(".twitter-share").attr("data-type", "");
-		// $(".twitter-share").attr("data-description", "#SocialiteApproved \n#TheAustinSocialite \n#ATX \nlink: " + window.location.href + "?type="+type + id)
-		// 					.trigger("click");
-		// console.log($(".twitter-share").prettySocial());
 		$(".twitter-share").attr("href", "https://twitter.com/intent/tweet?text="+ title +"&hashtags=" + hashtag + "&url=" + window.location.href + "?type="+type + id + "&size=small" )[0].click();
-		// setTimeout(function(){
-		// 	console.log($(".twitter-share")[0].click());
-
-		// },1000)
-        				
+		
 		return false;
 
     });
-
-    $('#calendar').datepicker({
-	        inline: true,
-	        firstDay: 1,
-	        minDate: 0,
-	        showOtherMonths: false,
-	        dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
-	    });
+    var selectedDay = new Date().getTime();
+    var dates = $('#calendar').datepicker({
+        inline: true,
+        firstDay: 1,
+        minDate: 0,
+        showOtherMonths: false,
+        dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+        onSelect: function(selectedDate) {
+        	// selectedDay = $(this).datepicker('getDate').getTime();       
+            if ($("#search-date").val() == "" || $("#end-date").val() == "" ) {
+		        if ($("#search-date").val() == ""){
+		        	$("#search-date").val(selectedDate);
+		        	$(this).datepicker('option', 'minDate', selectedDate);
+		        }else{
+		        	$("#end-date").val(selectedDate);
+		        	// $(this).datepicker('option', 'maxDate', selectedDate);
+		        }
+		    }
+		    console.log(selectedDay);
+      	}
+     //  	beforeShowDay: function (date) {
+	    //     var d = date.getTime();
+	    //     if (d > selectedDay && d < selectedDay + 1 + 86400000 * 7) {
+	    //         return [true, 'ui-state-highlight', ''];
+	    //     } else {
+	    //         return [true, ''];
+	    //     }
+	    // }
+    });
     $(".select-day .buttons button.prev").bind("click", function(){
 		$(".ui-datepicker-prev").click();
 	});
 	$(".select-day .buttons button.next").bind("click", function(){
 		$(".ui-datepicker-next").click();
 	});
+
+    $(".reset").on('click',function(){
+    	$("#search-date").val("");
+    	$("#end-date").val("");
+    	var today = new Date();
+    	$('#calendar').datepicker('option', 'minDate', today);
+    	$(".ui-state-default").removeClass("ui-state-active");
+    });
 });
 function fbShare(url, title, descr, image, winWidth, winHeight) {
 
