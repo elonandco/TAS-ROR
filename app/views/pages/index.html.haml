@@ -13,19 +13,24 @@
   .navigation
     %i.dot.fa.fa-circle-o
   .div
-    %a.fa.fa-long-arrow-left.slides-previous
-    %a.fa.fa-long-arrow-right.slides-next
+    %a.slides-previous
+    %a.slides-next
   .caption    
     .caption-text
       %span ADD EVENT
       %span SIGN UP
       %span LOG IN
     .caption-icons
-      .circle.event-green
+      .icon-circle
+        .circle.event-white
+        .circle.event-green
         / %img.event-cirlce{:src => asset_path("event.png")}
-      .circle.pic-white
-      .circle.video-white
-      .circle.blog-white
+      .icon-circle
+        .circle.pic-white
+      .icon-circle
+        .circle.video-white
+      .icon-circle
+        .circle.blog-white
     %span.headline
     %span.description
     .caption-learn

@@ -568,12 +568,18 @@ $(document).ready(function(){
 	});	
 
 	$(".ui-state-default").on('click', function () {
-		if ($("#search-date").val() == "" || $("#end-date").val() == "" ) {
-			$(".ui-state-default").removeClass("ui-state-active");
-			$(this).addClass("ui-state-active");
-			console.log("asdasd");
-		}
+		$(".ui-state-default").removeClass("ui-state-active");
+		$(this).addClass("ui-state-active");
 	});
+
+	// $(".icon-circle").hover(function(){
+	// 	$(".event-white").hide();
+ //        $("event-green").show();
+ //    });
+ //    $(".icon-circle").mouseout(function(){
+ //       $("event-green").hide();
+ //       $(".event-white").show();
+ //    });
 	
 	var type = $("#type").val();
 	setTimeout(function(){
@@ -737,11 +743,33 @@ $(document).ready(function(){
 		        	$("#search-date").val(selectedDate);
 		        	$(this).datepicker('option', 'minDate', selectedDate);
 		        }else{
-		        	$("#end-date").val(selectedDate);
-		        	// $(this).datepicker('option', 'maxDate', selectedDate);
+		        	// $(this).datepicker('option', 'minDate', selectedDate);
+		        	setTimeout(function(){
+						$("#end-date").val(selectedDate);
+
+			        	// $(".ui-datepicker").addClass("disable-click");
+			        	$(".ui-state-default").each(function() {
+						  
+						  // console.log($(this).parent("td"));
+						  if ($(this).hasClass("ui-state-active")){
+
+						  	return false;
+						  }
+						  
+						  if (!$(this).parent("td").hasClass("ui-state-disabled")){
+						  	$(this).addClass("ui-range");
+						  	// $(this).parent("td").addClass("ui-range");
+						  }
+						});
+					},50)
+		        	
 		        }
+		    }else {
+		    	$("#end-date").val("");
+		    	$("#search-date").val(selectedDate);
+	        	$(this).datepicker('option', 'minDate', selectedDate);
 		    }
-		    console.log(selectedDay);
+		    // console.log(selectedDay);
       	}
      //  	beforeShowDay: function (date) {
 	    //     var d = date.getTime();
@@ -753,8 +781,67 @@ $(document).ready(function(){
 	    // }
     });
     $(".select-day .buttons button.prev").bind("click", function(){
-		$(".ui-datepicker-prev").click();
+    	var start = $("#search-date").val() == "" ? "" : $("#search-date").val().substring(0, 2);
+    	var end = $("#end-date").val() == "" ? "" : $("#end-date").val().substring(0, 2);
+		var month = $(".ui-datepicker-month").text();
+    	if (end !== "") {
+    		if (end == "01" && month !== "January" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "02" && month !== "February" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "03" && month !== "March" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "04" && month !== "April" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "05" && month !== "May" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "06" && month !== "June" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "07" && month !== "July" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "08" && month !== "August" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "09" && month !== "September" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "10" && month !== "October" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "11" && month !== "November" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if (end == "12" && month !== "December" ){
+	    		$(".ui-datepicker-prev").click();
+	    	}
+	    	if ($(".ui-state-default").hasClass("ui-state-active")) {
+		    	setTimeout(function(){
+		        	$(".ui-state-default").each(function() {
+					  if ($(this).hasClass("ui-state-active")){
+					  	return false;
+					  }
+					  
+					  if (!$(this).parent("td").hasClass("ui-state-disabled")){
+					  	$(this).addClass("ui-range");
+					  }
+					});
+				},50)
+		    }
+	    }else {
+	    	$(".ui-datepicker-prev").click();
+	    	if (start == "" && end == "") {
+	    		$(".ui-state-default").removeClass("ui-state-active");
+	    	}
+	    }	    
 	});
+	
 	$(".select-day .buttons button.next").bind("click", function(){
 		$(".ui-datepicker-next").click();
 	});
@@ -765,21 +852,8 @@ $(document).ready(function(){
     	var today = new Date();
     	$('#calendar').datepicker('option', 'minDate', today);
     	$(".ui-state-default").removeClass("ui-state-active");
+    	$(".ui-datepicker").removeClass("disable-click");
     });
-
-    $('#calendar').datepicker({
-	        inline: true,
-	        firstDay: 1,
-	        minDate: 0,
-	        showOtherMonths: false,
-	        dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
-	    });
-    $(".select-day .buttons button.prev").bind("click", function(){
-		$(".ui-datepicker-prev").click();
-	});
-	$(".select-day .buttons button.next").bind("click", function(){
-		$(".ui-datepicker-next").click();
-	});
 });
 function fbShare(url, title, descr, image, winWidth, winHeight) {
 

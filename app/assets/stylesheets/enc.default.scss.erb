@@ -182,14 +182,7 @@ html, body {
 }
 
 .header {
-	// width: 100%;
-	// background: #202326;
-	// height: 70px;
-	// top: 0px;
-	// left: 0px;
-	// z-index: 2;
-	// font-family: 'Lato', sans-serif;
-	width: 78%;
+  width: 78%;
     background: #fff;
     position: absolute;
     height: 70px;
@@ -335,9 +328,6 @@ html, body {
 }
 .search-box form div{
   display: inline;
-}
-.search-box {
-  width: 40%;
 }
 .search-box {
   width: 40%;
@@ -572,12 +562,10 @@ a.search-btn {
 }
 
 .search-fields {
-	width: auto;
-	cursor: pointer;
-	// margin: 0 0 0 232px;
-	// overflow: hidden;
-	// position: relative;
- //    z-index: 3;
+  width: auto;
+  cursor: pointer;
+  margin: 0 0 0 300px;
+  position: relative;
 }
 
 /* Slideshow */
@@ -652,9 +640,26 @@ a.search-btn {
 .div a {
   margin: 0 5px;
   text-shadow: 0 0 2px #000;
-  border: 2px solid;
-    padding: 10px;
-    cursor: pointer;
+  // border: 2px solid;
+  // padding: 10px;
+  padding: 8px 0px 0 44px;
+  cursor: pointer;
+}
+.slides-previous {
+  background-image: url("<%= asset_path("Left_Arrow.png") %>");
+  // position: relative;
+  // background-attachment: fixed;
+  // background-size: cover;
+  // background-position: 100% 100%;
+  background-repeat: no-repeat;
+}
+.slides-next {
+  background-image: url("<%= asset_path("Right_Arrow.png") %>");
+  // position: relative;
+  // background-attachment: fixed;
+  // background-size: cover;
+  // background-position: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 // .bubble {
@@ -672,7 +677,6 @@ a.search-btn {
 // }
 .active-slider-date {
   background: #00b288;
-	color: #fff;
 }
 .slider-footer {
   width: 100%;
@@ -1565,22 +1569,22 @@ to {
   a {
     display: block;
   }
+  .icon-circle {
+    display: block;
+  }
   .circle {
     display: block;
     text-align: center;
     margin: 10px 10px;
     border-radius: 50%;
     width: 20px;
-      height: 20px;
-      padding: 23px;
+    height: 20px;
+    padding: 23px;
     background-color: #fff;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
-      -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
-      // .event-circle {
-      //  display: inline-block;
-      // }
-      cursor: pointer;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.63);
+    cursor: pointer;
 
       img {
         position: relative;
@@ -1596,13 +1600,15 @@ to {
   // }
   .event-green {
       background: url("<%= asset_path("event.png") %>") no-repeat 19px #00b288;
-    background-size: 27px;
+      background-size: 27px;
       background-repeat: no-repeat;
+      // display: none;
     }
     .event-white {
       background: url("<%= asset_path("event-bubble.png") %>") no-repeat -9px #fff;
     background-size: 84px;
       background-repeat: no-repeat;
+      display: none;
     }
     .pic-green {
       background: url("<%= asset_path("photos.png") %>") no-repeat 19px #00b288;
@@ -2085,10 +2091,11 @@ to {
   display: none;
 }
 
-.ads-template, .blogs-ads-template {
+.ads-template, .blogs-ads-template, .disable-click {
   cursor: text;
   pointer-events: none;
 }
+
 
 //##################### CALENDAR ###############################//
 .calendar {
@@ -2276,6 +2283,17 @@ to {
 .ui-state-active {
   background-color: #00b288 !important;
   color: #fff !important;
+  // height: 13px;
+}
+
+.ui-range {
+  background-color: #00b288 !important;
+  color: #fff !important;
+}
+
+.ui-datepicker-selected-range {
+    background-color: #eee;
 }
 //##############################################################//
+
 
