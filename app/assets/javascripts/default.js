@@ -770,9 +770,16 @@ $(document).ready(function(){
     $('#calendar').datepicker({
 	        inline: true,
 	        firstDay: 1,
-	        showOtherMonths: true,
-	        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+	        minDate: 0,
+	        showOtherMonths: false,
+	        dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 	    });
+    $(".select-day .buttons button.prev").bind("click", function(){
+		$(".ui-datepicker-prev").click();
+	});
+	$(".select-day .buttons button.next").bind("click", function(){
+		$(".ui-datepicker-next").click();
+	});
 });
 function fbShare(url, title, descr, image, winWidth, winHeight) {
 
