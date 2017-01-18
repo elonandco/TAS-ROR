@@ -85,6 +85,19 @@
           %span.title
           %span.id
           %p.description
+    .mask
+      .orverlay
+        .setting
+          %span.type 
+          %span.title 
+        .center.date
+          %p
+            %span.dayofweek
+            %span.month
+          .sponsored
+        .button-container
+          %button ADD TO CALENDAR
+          %button.second MORE DETAILS
   .content-box.blogs-template.no-content
     .image
     .content
@@ -95,6 +108,14 @@
           %span.title
           %span.id
           %p.description
+    .mask
+      .orverlay
+        .setting
+          %span.type 
+          %span.title 
+        .button-container
+          %button ADD TO CALENDAR
+          %button.second MORE DETAILS
   .content-box.pictures-template.no-content
     .image
     .content
@@ -108,6 +129,19 @@
           %span.title
           %span.id
           %p.description
+    .mask
+      .orverlay
+        .setting
+          %span.place 
+          %span.title 
+        .center.date
+          %p
+            %span.dayofweek
+            %span.month
+          / .sponsored
+        .button-container
+          %button ADD TO CALENDAR
+          %button.second MORE DETAILS
   .content-box.videos-template.no-content
     .image
     .player
@@ -177,6 +211,9 @@
                 %button FIND
               .calendar
                 #calendar
+              .buttons
+                %button.prev PREV
+                %button.next NEXT
               .reset-apply
                 %button.reset RESET
                 %button.apply APPLY

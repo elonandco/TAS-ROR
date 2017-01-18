@@ -7,8 +7,8 @@
 		<detail>DJ Dontizl has a style all his own and a loyal fanbase in the Capitol City. We caught up with the DJ for a glimpse into his life of music.</detail>
 		<description>DJ Dontizl has a style all his own and a loyal fanbase in the Capitol City. We caught up with the DJ for a glimpse into his life of music.</description>
 		<image>assets/blogs1.png</image>
-        <sponsored>true</sponsored>
-        <ad>false</ad>	
+        <sponsored>Sponsored AD</sponsored>
+        <ad>Sample AD</ad>	
 	</article>
 	<article>
 		<type>Showcase</type>
@@ -16,8 +16,8 @@
 		<share>Share</share>
 		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
 		<image>assets/blogs2.png</image>
-        <sponsored>true</sponsored>
-        <ad>false</ad>	
+        <sponsored>Sponsored AD</sponsored>
+        <ad>Sample AD</ad>	
 	</article>
 	<article>
 		<type>Showcase</type>
@@ -25,8 +25,8 @@
 		<share>Share</share>
 		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
 		<image>assets/blogs3.png</image>
-        <sponsored>false</sponsored>
-        <ad>true</ad>	
+        <sponsored>Sponsored AD</sponsored>
+        <ad>Sample AD</ad>	
 	</article>
 	<article>
 		<type>Showcase</type>
@@ -34,8 +34,8 @@
 		<share>Share</share>
 		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
 		<image>assets/blogs4.png</image>
-        <sponsored>false</sponsored>
-        <ad>false</ad>	
+        <sponsored>Sponsored AD</sponsored>
+        <ad>Sample AD</ad>	
 	</article>
 	<article>
 		<type>Showcase</type>
@@ -43,8 +43,8 @@
 		<share>Share</share>
 		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
 		<image>assets/blogs5.png</image>
-        <sponsored>false</sponsored>
-        <ad>false</ad>	
+        <sponsored>Sponsored AD</sponsored>
+        <ad>Sample AD</ad>	
 	</article>
 	<article>
 		<type>Showcase</type>
@@ -52,8 +52,8 @@
 		<share>Share</share>
 		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
 		<image>assets/blogs6.png</image>
-        <sponsored>false</sponsored>
-        <ad>false</ad>	
+        <sponsored>Sponsored AD</sponsored>
+        <ad>Sample AD</ad>	
 	</article>
 	<article>
 		<type>Showcase</type>
@@ -61,8 +61,8 @@
 		<share>Share</share>
 		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
 		<image>assets/blogs7.png</image>
-        <sponsored>false</sponsored>
-        <ad>false</ad>	
+        <sponsored>Sponsored AD</sponsored>
+        <ad>Sample AD</ad>	
 	</article>
 	<article>
 		<type>Showcase</type>
@@ -70,7 +70,7 @@
 		<share>Share</share>
 		<description>Hey! You just clicked a blog but my developer is too lazy to enter content.</description>
 		<image>assets/blogs8.png</image>
-        <sponsored>false</sponsored>
-        <ad>true</ad>	
+        <sponsored>Sponsored AD</sponsored>
+        <ad>Sample AD</ad>	
 	</article>
 </articles>

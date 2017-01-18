@@ -83,10 +83,14 @@ var TAS = TAS || {
 			numofArticles = sections[x].content.children('article').length,
 			//max count 
 			maxCount = (limit > numofArticles) ? numofArticles : limit;
-			console.log(numofArticles);
+			console.log(numofArticles + " " + sections[x].name + " " + maxCount);
 			//fetch defined number of place holders only
 	        for (var y = sections[x].loaded; y < maxCount; y++) {
-	        	console.log(sections[x].name);
+	        	// console.log(sections[x].name);
+	        	// console.log("count " + sections[x].name + " " + y)
+	        	// if(y % 3 == 0) {
+	        	// 	console.log("something " + sections[x].name)
+	        	// }
 	        	if(y == 0 && sections[x].name == "events") {
 	        		template = $(".templates .event-add-post");
 					sections[x].adIndex += sections[x].adIndex;
@@ -104,6 +108,11 @@ var TAS = TAS || {
 				}
 				// console.log(sections[x].adIndex);
 				//Append template to homepage
+				if (y == 4 && sections[x].loaded == 0) {
+					template = $(".templates .ads-template");
+					sections[x].adIndex += sections[x].adIndex;
+					// template.clone().addClass('ad-space').insertBefore(".articles ." + sections[x].name+" .load-more");		
+				}
 				template.clone().insertBefore(".articles ." + sections[x].name+" .load-more");	
 					//Append template to full description
 				template.clone().insertBefore(".bookmarked-articles ." + sections[x].name+" .load-more");	
@@ -207,8 +216,8 @@ var TAS = TAS || {
 				box.removeClass('no-content');
 				
 				//now, insert the content for each div within box
+				x = 0;
 				$this[section].content.children('article').eq($this[section].loaded).children().each(function(){
-					// console.log($(this)[0].nodeName + " " + box.attr("name"))
 					$this.insertContent($(this),box);
 				})
 				i = $this[section].loaded++
@@ -222,9 +231,8 @@ var TAS = TAS || {
 				}else if (section == "videos") {
 					type_id = section + video_ids[i];
 				}
-				
+
 				box.attr('id', type_id);
-				console.log(section);
 			}else{
 				return false;	
 			} 
@@ -561,7 +569,7 @@ $(document).ready(function(){
 	   	}, 'slow');
 	}
 
-	console.log(type);
+	// console.log(type);
 	
 
 	$(".slides-previous").on('click',function(){	
@@ -607,7 +615,7 @@ $(document).ready(function(){
 			ShowArrow(pos);
 		}
 		
-		console.log(pos-1);
+		// console.log(pos-1);
 	});
 
 	function ShowArrow(pos) {
@@ -650,7 +658,7 @@ $(document).ready(function(){
 			if (type != "") {
 				$("#events12").trigger( "click" );
 				// document.getElementById('events12').click();
-				console.log(type);
+				// console.log(type);
 			}		
 		},1000)
 	} 
@@ -708,9 +716,16 @@ $(document).ready(function(){
     $('#calendar').datepicker({
 	        inline: true,
 	        firstDay: 1,
-	        showOtherMonths: true,
-	        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+	        minDate: 0,
+	        showOtherMonths: false,
+	        dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 	    });
+    $(".select-day .buttons button.prev").bind("click", function(){
+		$(".ui-datepicker-prev").click();
+	});
+	$(".select-day .buttons button.next").bind("click", function(){
+		$(".ui-datepicker-next").click();
+	});
 });
 function fbShare(url, title, descr, image, winWidth, winHeight) {
 
