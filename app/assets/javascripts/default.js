@@ -766,6 +766,13 @@ $(document).ready(function(){
     	$('#calendar').datepicker('option', 'minDate', today);
     	$(".ui-state-default").removeClass("ui-state-active");
     });
+
+    $('#calendar').datepicker({
+	        inline: true,
+	        firstDay: 1,
+	        showOtherMonths: true,
+	        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+	    });
 });
 function fbShare(url, title, descr, image, winWidth, winHeight) {
 
