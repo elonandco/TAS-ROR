@@ -731,12 +731,14 @@ $(document).ready(function(){
     });
     var selectedDay = new Date().getTime();
     var dates = $('#calendar').datepicker({
+        dateFormat: "dd/mm/yy",
         inline: true,
         firstDay: 1,
         minDate: 0,
         showOtherMonths: false,
         dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
         onSelect: function(selectedDate) {
+        	$('.radio-button').prop('checked', false);
         	// selectedDay = $(this).datepicker('getDate').getTime();       
             if ($("#search-date").val() == "" || $("#end-date").val() == "" ) {
 		        if ($("#search-date").val() == ""){
@@ -781,10 +783,11 @@ $(document).ready(function(){
 	    // }
     });
     $(".select-day .buttons button.prev").bind("click", function(){
-    	var start = $("#search-date").val() == "" ? "" : $("#search-date").val().substring(0, 2);
-    	var end = $("#end-date").val() == "" ? "" : $("#end-date").val().substring(0, 2);
+    	var start = $("#search-date").val() == "" ? "" : $("#search-date").val().substring(3, 5);
+    	var end = $("#end-date").val() == "" ? "" : $("#end-date").val().substring(3, 5);
 		var month = $(".ui-datepicker-month").text();
     	if (end !== "") {
+    		console.log(start + " - " + end);
     		if (end == "01" && month !== "January" ){
 	    		$(".ui-datepicker-prev").click();
 	    	}
@@ -853,7 +856,65 @@ $(document).ready(function(){
     	$('#calendar').datepicker('option', 'minDate', today);
     	$(".ui-state-default").removeClass("ui-state-active");
     	$(".ui-datepicker").removeClass("disable-click");
+    	$('.radio-button').prop('checked', false);
     });
+
+    $('.radio-button').on("click", function(event){
+	    $("#search-date").val("");
+    	$("#end-date").val("");
+    	var today = new Date();
+    	$('#calendar').datepicker('option', 'minDate', today);
+    	$(".ui-state-default").removeClass("ui-state-active");
+    	$(".ui-datepicker").removeClass("disable-click");
+    	console.log($("input[name='time']:checked").val());
+	});
+
+	$(document).on('change', '#search-date', function(e) {
+		$('.radio-button').prop('checked', false);
+	});
+
+	$(".apply").click(function(){
+        search();
+    });
+
+    $(".button-find").click(function(){
+        search();
+    });
+
+    function search() {
+    	if ($("#search-date").val() !== "") {
+	    	var data = {start_date: $("#search-date").val(), end_date: $("#end-date").val()}
+    	}else {
+    		var data = {time: $("input[name='time']:checked").val()}
+    	}
+	    $.ajax({
+	        url: "/pages/search",
+	        type: "GET",
+	        data: data,
+	        error: function(result){
+	            // $(".error_msg").empty();
+	            // $("#error_message").append("<div class='error_msg'>"+JSON.parse(result.responseText).message+"</div>");
+	            // $("#error_message").slideDown(); 
+	            // setTimeout(function(){
+	            //   $("#error_message").slideUp();
+	            // }, 5000);
+	            alert(JSON.parse(result.responseText).message);
+	        },
+	        success: function(result){  
+	            // window.location.href = "/admindir/dashboard"
+	            // alert(result.results.obj);
+	            if (result.results.length > 0) {
+		            $.each(result.results, function(idx, obj) {
+	                  console.log(obj);
+	                })
+		        }else {
+		        	console.log("No Results Found.");
+		        }
+	            // console.log(result);
+	        }
+	      });      
+	  }
+
 });
 function fbShare(url, title, descr, image, winWidth, winHeight) {
 

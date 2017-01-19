@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   		get :events
   		get :pictures
   		get :videos
+  		get :search
   	}
   end
 end
