@@ -195,22 +195,22 @@
               PICK A TIME
               .time-options
                 %form
-                  %input{:name => "vehicle", :type => "checkbox", :value => "Today"}/
+                  %input{:name => "time", :type => "radio", :value => "1", class: "radio-button"}/
                   Today
                   %br/
-                  %input{:name => "vehicle", :type => "checkbox", :value => "Tomorrow"}/
+                  %input{:name => "time", :type => "radio", :value => "2", class: "radio-button"}/
                   Tomorrow
                   %br/
-                  %input{:name => "vehicle", :type => "checkbox", :value => "This Weekend"}/
-                  This Weekend
+                  %input{:name => "time", :type => "radio", :value => "3", class: "radio-button"}/
+                  This Week
                   %br/
-                  %input{:name => "vehicle", :type => "checkbox", :value => "Weekend"}/
+                  %input{:name => "time", :type => "radio", :value => "4", class: "radio-button"}/
                   Weekend
                   %br/
-                  %input{:name => "vehicle", :type => "checkbox", :value => "Next Week"}/
+                  %input{:name => "time", :type => "radio", :value => "5", class: "radio-button"}/
                   Next Week
                   %br/
-                  %input{:name => "vehicle", :type => "checkbox", :value => "Next 30  Days"}/
+                  %input{:name => "time", :type => "radio", :value => "6", class: "radio-button"}/
                   Next 30  Days
 
             .select-day
@@ -218,7 +218,7 @@
               .range
                 %input#search-date{type: "text", placeholder: "Search Date"}
                 %input#end-date{type: "text", placeholder: "End Date"}
-                %button FIND
+                %button.button-find FIND
               .calendar
                 #calendar
               .buttons
