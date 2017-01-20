@@ -12,73 +12,63 @@ class PagesController < ApplicationController
 
   def blogs
   	blogs = Blog.all.order("id asc")
-
     @blogs = blog_results(blogs)
-
     return render xml: @blogs.to_xml(root: "articles") 
   end
 
   def events
     events = Event.all.order("id asc")
-
     @events = event_results(events)
-
     return render xml: @events.to_xml(root: "articles")
   end
 
   def pictures
     pictures = Picture.all.order("id asc")
-
     @pictures = picture_results(pictures)
-
     return render xml: @pictures.to_xml(root: "articles")
   end
 
   def videos
     videos = Video.all.order("id asc")
-
     @videos = video_results(videos)
-
     return render xml: @videos.to_xml(root: "articles")
   end
 
   def search
     @results = []
     if params[:time].present?
-      # if params[:section_type].present?
-      section = params[:section_type].present? ? params[:section_type] : nil
-      # else
-        if params[:time] == "1"
-          date = Date.today
-          
-          @results = section.present? ? results_in_a_day(date, section) : all_results_in_a_day(date)
-        elsif params[:time] == "2"
-          
-          date = Date.today + 1
-          @results = section.present? ? results_in_a_day(date, section) : all_results_in_a_day(date)
+      section = params[:section_type].present? ? params[:section_type] : nil      
+      if params[:time] == "1"
+        date = Date.today
         
-        elsif params[:time] == "3"
-          
-          date = Date.today
-          @results = all_results_in_a_week(date)
+        @results = section.present? ? results_in_a_day(date, section) : all_results_in_a_day(date)
+      elsif params[:time] == "2"
         
-        elsif params[:time] == "4"
-          
-          @results = all_results_by_weekend
+        date = Date.today + 1
+        @results = section.present? ? results_in_a_day(date, section) : all_results_in_a_day(date)
+      
+      elsif params[:time] == "3"
         
-        elsif params[:time] == "5"
-          
-          date = Date.today + 7
-          @results = all_results_in_a_week(date)
+        date = Date.today
+        @results = section.present? ? all_results_in_a_week(date, section) : all_results_in_a_week(date)
+      
+      elsif params[:time] == "4"
         
-        elsif params[:time] == "6"
-          
-          start_date = Date.today + 1
-          end_date   = Date.today + 30
-          @results = all_results_by_range(start_date, end_date)
+        @results = section.present? ? all_results_by_weekend(section) : all_results_by_weekend
+      
+      elsif params[:time] == "5"
         
-        end
-      # end
+        date = Date.today + 7
+        @results = section.present? ? all_results_in_a_week(date, section) : all_results_in_a_week(date)
+      
+      elsif params[:time] == "6"
+        
+        start_date = Date.today + 1
+        end_date   = Date.today + 30
+        @results = section.present? ? all_results_by_range(start_date, end_date, section) : all_results_by_range(start_date, end_date)
+      
+      end
+     
       render json: { results: @results, status: 200 }, status: 200
     elsif params[:start_date].present?
       start_date = params[:start_date].to_date
@@ -209,20 +199,44 @@ class PagesController < ApplicationController
       return Video.where("DATE(video_date) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
     end
 
-    def all_results_by_range(start_date, end_date)
+    def all_results_by_range(start_date, end_date, section = nil)
       @results = []
 
-      events   =  Event.where("DATE(event_date) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
-      @results = @results + event_results(events)
-    
-      blogs    = Blog.where("DATE(updated_at) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
-      @results = @results + blog_results(blogs)
-    
-      pictures = Picture.where("DATE(picture_date) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
-      @results = @results + picture_results(pictures)
-    
-      videos   = Video.where("DATE(video_date) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
-      @results = @results + video_results(videos)
+      if !section.present?
+        events   =  Event.where("DATE(event_date) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
+        @results = @results + event_results(events)
+      
+        blogs    = Blog.where("DATE(updated_at) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
+        @results = @results + blog_results(blogs)
+      
+        pictures = Picture.where("DATE(picture_date) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
+        @results = @results + picture_results(pictures)
+      
+        videos   = Video.where("DATE(video_date) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
+        @results = @results + video_results(videos)
+      else
+        if section == "events"
+          
+          events   =  Event.where("DATE(event_date) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
+          @results = @results + event_results(events)
+        
+        elsif section == "blogs"
+          
+          blogs    = Blog.where("DATE(updated_at) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
+          @results = @results + blog_results(blogs)
+        
+        elsif section == "pictures"
+          
+          pictures = Picture.where("DATE(picture_date) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)
+          @results = @results + picture_results(pictures)
+        
+        elsif section == "videos"
+          
+          videos   = Video.where("DATE(video_date) BETWEEN DATE(?) AND DATE(?)", start_date, end_date)          
+          @results = @results + video_results(videos)
+        
+        end
+      end
 
       return @results
     end
@@ -257,25 +271,48 @@ class PagesController < ApplicationController
       return @results
     end
 
-    def all_results_in_a_week(date)      
+    def all_results_in_a_week(date, section = nil)      
       @results = []
 
-      events   = Event.where("DATE(event_date) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
-      @results = @results + event_results(events)
+      if !section.present?
+        events   = Event.where("DATE(event_date) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
+        @results = @results + event_results(events)
 
-      blogs    = Blog.where("DATE(updated_at) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
-      @results = @results + blog_results(blogs)
+        blogs    = Blog.where("DATE(updated_at) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
+        @results = @results + blog_results(blogs)
 
-      pictures = Picture.where("DATE(picture_date) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
-      @results = @results + picture_results(pictures)
+        pictures = Picture.where("DATE(picture_date) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
+        @results = @results + picture_results(pictures)
 
-      videos   = Video.where("DATE(video_date) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
-      @results = @results + video_results(videos)
+        videos   = Video.where("DATE(video_date) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
+        @results = @results + video_results(videos)
+      else
+        if section == "events"
+          
+          events   = Event.where("DATE(event_date) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
+          @results = @results + event_results(events)
+        
+        elsif section == "blogs"
+          
+          blogs    = Blog.where("DATE(updated_at) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
+          @results = @results + blog_results(blogs)
+        
+        elsif section == "pictures"
+          
+          pictures = Picture.where("DATE(picture_date) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
+          @results = @results + picture_results(pictures)
+        
+        elsif section == "videos"
+          
+          videos   = Video.where("DATE(video_date) BETWEEN DATE(?) AND DATE(?)", date.beginning_of_week, date.end_of_week)
+          @results = @results + video_results(videos)
+        end
+      end
 
       return @results
     end
 
-    def all_results_by_weekend
+    def all_results_by_weekend(section = nil)
       date = Date.today
       
       sat = (date.beginning_of_week..date.end_of_week).group_by(&:wday)[6][0]
@@ -284,17 +321,39 @@ class PagesController < ApplicationController
 
       @results = []
 
-      events   = Event.where("DATE(event_date) = DATE(?) or DATE(event_date) = DATE(?)", sat, sun)
-      @results = @results + event_results(events)
+      if !section.present?
+        events   = Event.where("DATE(event_date) = DATE(?) or DATE(event_date) = DATE(?)", sat, sun)
+        @results = @results + event_results(events)
 
-      blogs    = Blog.where("DATE(updated_at) = DATE(?) or DATE(updated_at) = DATE(?)", sat, sun)
-      @results = @results + blog_results(blogs)
+        blogs    = Blog.where("DATE(updated_at) = DATE(?) or DATE(updated_at) = DATE(?)", sat, sun)
+        @results = @results + blog_results(blogs)
 
-      pictures = Picture.where("DATE(picture_date) = DATE(?) or DATE(picture_date) = DATE(?)", sat, sun)
-      @results = @results + picture_results(pictures)
+        pictures = Picture.where("DATE(picture_date) = DATE(?) or DATE(picture_date) = DATE(?)", sat, sun)
+        @results = @results + picture_results(pictures)
 
-      videos   = Video.where("DATE(video_date) = DATE(?) or DATE(video_date) = DATE(?)", sat, sun)
-      @results = @results + video_results(videos)
+        videos   = Video.where("DATE(video_date) = DATE(?) or DATE(video_date) = DATE(?)", sat, sun)
+        @results = @results + video_results(videos)
+      else
+        if section == "events"
+          events   = Event.where("DATE(event_date) = DATE(?) or DATE(event_date) = DATE(?)", sat, sun)
+          @results = @results + event_results(events)
+        
+        elsif section == "blogs"
+          
+          blogs    = Blog.where("DATE(updated_at) = DATE(?) or DATE(updated_at) = DATE(?)", sat, sun)
+          @results = @results + blog_results(blogs)
+        
+        elsif section == "pictures"
+          
+          pictures = Picture.where("DATE(picture_date) = DATE(?) or DATE(picture_date) = DATE(?)", sat, sun)
+          @results = @results + picture_results(pictures)
+        
+        elsif section == "videos"
+          
+          videos   = Video.where("DATE(video_date) = DATE(?) or DATE(video_date) = DATE(?)", sat, sun)
+          @results = @results + video_results(videos)
+        end
+      end
 
       return @results
     end
