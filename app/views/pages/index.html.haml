@@ -21,16 +21,19 @@
       %span SIGN UP
       %span LOG IN
     .caption-icons
-      .icon-circle
+      .icon-circle#event_circle
         .circle.event-white
         .circle.event-green
-        / %img.event-cirlce{:src => asset_path("event.png")}
-      .icon-circle
-        .circle.pic-white
-      .icon-circle
+      .icon-circle#video_circle
         .circle.video-white
-      .icon-circle
-        .circle.blog-white
+        .circle.video-green
+      .icon-circle#pic_circle
+        .circle.pic-white
+        .circle.pic-green
+      
+      / .icon-circle#blog_circle
+      /   .circle.blog-white
+      /   .circle.blog-green
     %span.headline
     %span.description
     .caption-learn
@@ -198,17 +201,22 @@
                   %input{:name => "time", :type => "radio", :value => "1", class: "radio-button"}/
                   Today
                   %br/
+                  %br/
                   %input{:name => "time", :type => "radio", :value => "2", class: "radio-button"}/
                   Tomorrow
+                  %br/
                   %br/
                   %input{:name => "time", :type => "radio", :value => "3", class: "radio-button"}/
                   This Week
                   %br/
+                  %br/
                   %input{:name => "time", :type => "radio", :value => "4", class: "radio-button"}/
                   Weekend
                   %br/
+                  %br/
                   %input{:name => "time", :type => "radio", :value => "5", class: "radio-button"}/
                   Next Week
+                  %br/
                   %br/
                   %input{:name => "time", :type => "radio", :value => "6", class: "radio-button"}/
                   Next 30  Days
@@ -267,34 +275,34 @@
     / .section-name{:name => "pictures"} Pictures
     / .section-name{:name => "videos"} Videos
   .section.events.main.top-section{:name => "events"}
-    .section-name.event
+    .section-name.event#event_section
       .title-place
         .section-title
           %img.section-title-image{:src => asset_path("section-bg.png")}
           .title-event EVENTS   
     .load-more LOAD MORE
   .section.blogs.main{:name => "blogs"}
-    .section-name.blog
+    .section-name.blog#blog_section
       .title-place
         .section-title{style: "margin-left: 115px"}
           %img.section-title-image{:src => asset_path("section-bg.png")}
           .title-event BLOGS AND VLOGS
     .load-more LOAD MORE
   .section.pictures.main{:name => "pictures"}
-    .section-name.event
+    .section-name.event#pic_section
       .title-place
         .section-title
           %img.section-title-image{:src => asset_path("section-bg.png")}
           .title-event PICTURES 
     .load-more LOAD MORE
   .section.videos.main{:name => "videos", style: "display: none"}
-    .section-name.event
+    .section-name.event#blog_section
       .title-place
         .section-title
           %img.section-title-image{:src => asset_path("section-bg.png")}
           .title-event VIDEOS 
     .load-more LOAD MORE
-  .section.giveaways.main{:name => "videos"}
+  .section.giveaways
     .section-name.event
       .title-place
         .section-title{style: "margin-left: 130px"}
